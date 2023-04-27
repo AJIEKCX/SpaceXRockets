@@ -8,6 +8,8 @@ import ru.alexpanov.rockets.api.Rockets
 interface Root {
     val childStack: Value<ChildStack<*, Child>>
 
+    fun onBackClicked()
+
     sealed class Child {
         class RocketsChild(val component: Rockets) : Child()
         class LaunchesChild(val component: Launches) : Child()

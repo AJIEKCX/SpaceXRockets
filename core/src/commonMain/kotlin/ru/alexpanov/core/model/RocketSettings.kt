@@ -7,12 +7,12 @@ data class RocketSettings(
     val payloadWeight: MassUnit
 )
 
-enum class MassUnit {
-    Kg,
-    Lb
+enum class MassUnit(val value: String) {
+    Kg("kg"),
+    Lb("lb")
 }
 
-enum class DistanceUnit {
-    Meters,
-    Feet
+enum class DistanceUnit(val value: String) {
+    Meters("m"),
+    Feet("ft")
 }

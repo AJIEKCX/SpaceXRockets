@@ -13,6 +13,12 @@
 		622386F329F5A90C001FC942 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386EE29F5A90C001FC942 /* ObservableValue.swift */; };
 		622386F529F5A90C001FC942 /* ObservableStateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386F029F5A90C001FC942 /* ObservableStateFlow.swift */; };
 		622386FB29F5AADC001FC942 /* RocketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386FA29F5AADC001FC942 /* RocketsView.swift */; };
+		6226CF7B29F6F50C00ADA4F4 /* RocketContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */; };
+		6226CF7E29F6FE3300ADA4F4 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */; };
+		62926DD029F8511B00D262A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DCF29F8511B00D262A9 /* Color.swift */; };
+		62926DD329F8638E00D262A9 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD229F8638E00D262A9 /* AppButton.swift */; };
+		62926DD529FA586E00D262A9 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD429FA586E00D262A9 /* StackView.swift */; };
+		62926DD729FA6D0E00D262A9 /* LaunchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD629FA6D0E00D262A9 /* LaunchesView.swift */; };
 		62A02C3B29F28E7F00CEC9F4 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A02C3A29F28E7F00CEC9F4 /* RootHolder.swift */; };
 		A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
 		A93A953F29CC810D00F8E227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A93A953E29CC810D00F8E227 /* Assets.xcassets */; };
@@ -28,6 +34,12 @@
 		622386EE29F5A90C001FC942 /* ObservableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		622386F029F5A90C001FC942 /* ObservableStateFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableStateFlow.swift; sourceTree = "<group>"; };
 		622386FA29F5AADC001FC942 /* RocketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsView.swift; sourceTree = "<group>"; };
+		6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketContentView.swift; sourceTree = "<group>"; };
+		6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
+		62926DCF29F8511B00D262A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		62926DD229F8638E00D262A9 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		62926DD429FA586E00D262A9 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		62926DD629FA6D0E00D262A9 /* LaunchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesView.swift; sourceTree = "<group>"; };
 		62A02C3A29F28E7F00CEC9F4 /* RootHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootHolder.swift; sourceTree = "<group>"; };
 		73FFDDCA9C728FEE3DFEF2F4 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A93A953729CC810C00F8E227 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +64,7 @@
 		622386EB29F5A8E9001FC942 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				62926DD429FA586E00D262A9 /* StackView.swift */,
 				622386EC29F5A90C001FC942 /* MutableValue.swift */,
 				622386F029F5A90C001FC942 /* ObservableStateFlow.swift */,
 				622386EE29F5A90C001FC942 /* ObservableValue.swift */,
@@ -63,6 +76,8 @@
 		622386F629F5AAA4001FC942 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				62926DD129F8637F00D262A9 /* Widget */,
+				6226CF7C29F6FE2100ADA4F4 /* Common */,
 				622386F929F5AAC5001FC942 /* Launches */,
 				622386F829F5AABA001FC942 /* Rockets */,
 				622386F729F5AAAC001FC942 /* Root */,
@@ -83,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				622386FA29F5AADC001FC942 /* RocketsView.swift */,
+				6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */,
 			);
 			path = Rockets;
 			sourceTree = "<group>";
@@ -90,8 +106,26 @@
 		622386F929F5AAC5001FC942 /* Launches */ = {
 			isa = PBXGroup;
 			children = (
+				62926DD629FA6D0E00D262A9 /* LaunchesView.swift */,
 			);
 			path = Launches;
+			sourceTree = "<group>";
+		};
+		6226CF7C29F6FE2100ADA4F4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */,
+				62926DCF29F8511B00D262A9 /* Color.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		62926DD129F8637F00D262A9 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				62926DD229F8638E00D262A9 /* AppButton.swift */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		979913F6AE5D271756D4649D /* Pods */ = {
@@ -246,9 +280,15 @@
 			files = (
 				622386F129F5A90C001FC942 /* MutableValue.swift in Sources */,
 				622386F529F5A90C001FC942 /* ObservableStateFlow.swift in Sources */,
+				62926DD029F8511B00D262A9 /* Color.swift in Sources */,
+				62926DD729FA6D0E00D262A9 /* LaunchesView.swift in Sources */,
+				62926DD329F8638E00D262A9 /* AppButton.swift in Sources */,
 				622386FB29F5AADC001FC942 /* RocketsView.swift in Sources */,
+				6226CF7B29F6F50C00ADA4F4 /* RocketContentView.swift in Sources */,
+				6226CF7E29F6FE3300ADA4F4 /* RoundedCornerShape.swift in Sources */,
 				A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */,
 				622386F329F5A90C001FC942 /* ObservableValue.swift in Sources */,
+				62926DD529FA586E00D262A9 /* StackView.swift in Sources */,
 				62A02C3B29F28E7F00CEC9F4 /* RootHolder.swift in Sources */,
 				622386F229F5A90C001FC942 /* SimpleChildStack.swift in Sources */,
 				622386EA29F5A864001FC942 /* RootView.swift in Sources */,
@@ -308,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -362,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

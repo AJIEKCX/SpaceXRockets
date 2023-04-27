@@ -18,10 +18,10 @@ internal fun Rocket.toUiModel(settings: RocketSettings): RocketUiModel {
         id = id,
         name = name,
         params = listOf(
-            RocketParamUiModel("Высота", height.formatValue(settings.height)),
-            RocketParamUiModel("Диаметр", diameter.formatValue(settings.diameter)),
-            RocketParamUiModel("Масса", mass.formatValue(settings.mass)),
-            RocketParamUiModel("Нагрузка", payloadWeight.formatValue(settings.payloadWeight))
+            height.toUiModel(settings.height),
+            diameter.toUiModel(settings.diameter),
+            mass.toUiModel(settings.mass),
+            payloadWeight.toUiModel(settings.payloadWeight)
         ),
         firstFlight = firstFlight,
         country = country,
@@ -40,30 +40,34 @@ private fun RocketStage.toUiModel(): RocketStageUiModel {
     )
 }
 
-private fun RocketHeight.formatValue(unit: DistanceUnit): String {
-    return when (unit) {
-        DistanceUnit.Meters -> "$meters, m"
-        DistanceUnit.Feet -> "$feet, ft"
+private fun RocketHeight.toUiModel(unit: DistanceUnit): RocketParamUiModel {
+    val value = when (unit) {
+        DistanceUnit.Meters -> meters
+        DistanceUnit.Feet -> feet
     }
+    return RocketParamUiModel(title = "Height, ${unit.value}", value.toString())
 }
 
-private fun RocketDiameter.formatValue(unit: DistanceUnit): String {
-    return when (unit) {
-        DistanceUnit.Meters -> "$meters, m"
-        DistanceUnit.Feet -> "$feet, ft"
+private fun RocketDiameter.toUiModel(unit: DistanceUnit): RocketParamUiModel {
+    val value = when (unit) {
+        DistanceUnit.Meters -> meters
+        DistanceUnit.Feet -> feet
     }
+    return RocketParamUiModel(title = "Diameter, ${unit.value}", value.toString())
 }
 
-private fun RocketMass.formatValue(unit: MassUnit): String {
-    return when (unit) {
-        MassUnit.Kg -> "$kg, kg"
-        MassUnit.Lb -> "$lb, lb"
+private fun RocketMass.toUiModel(unit: MassUnit): RocketParamUiModel {
+    val value = when (unit) {
+        MassUnit.Kg -> kg
+        MassUnit.Lb -> lb
     }
+    return RocketParamUiModel(title = "Mass, ${unit.value}", value.toString())
 }
 
-private fun PayloadWeight.formatValue(unit: MassUnit): String {
-    return when (unit) {
-        MassUnit.Kg -> "$kg, kg"
-        MassUnit.Lb -> "$lb, lb"
+private fun PayloadWeight.toUiModel(unit: MassUnit): RocketParamUiModel {
+    val value = when (unit) {
+        MassUnit.Kg -> kg
+        MassUnit.Lb -> lb
     }
+    return RocketParamUiModel(title = "Payload, ${unit.value}", value.toString())
 }

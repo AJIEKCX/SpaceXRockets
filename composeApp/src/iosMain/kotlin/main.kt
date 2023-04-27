@@ -1,9 +1,8 @@
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
+import ru.alexpanov.launches.api.Launches
+import ru.alexpanov.spacex.LaunchesScreen
 
-fun MainViewController(): UIViewController {
-    return ComposeUIViewController { Box(Modifier.fillMaxSize()) }
+fun LaunchesViewController(component: Launches): UIViewController {
+    return ComposeUIViewController { LaunchesScreen(component) }
 }

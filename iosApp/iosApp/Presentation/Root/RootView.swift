@@ -4,9 +4,8 @@ import SwiftUI
 struct RootView: View {
     private let root: Root
     @ObservedObject private var childStack: ObservableValue<ChildStack<AnyObject, RootChild>>
-    private var activeChild: RootChild {
-        childStack.value.active.instance
-    }
+    
+    private var stack: ChildStack<AnyObject, RootChild> { childStack.value }
     
     init(_ root: Root) {
         self.root = root
@@ -14,8 +13,13 @@ struct RootView: View {
     }
     
     var body: some View {
-        ChildView(child: activeChild)
-            .frame(maxHeight: .infinity)
+        StackView(
+            stackValue: childStack,
+            getTitle: { _ in "Ttile" },
+            onBack: root.onBackClicked,
+            childContent: ChildView.init
+        )
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -26,8 +30,12 @@ private struct ChildView: View {
         switch child {
         case let child as RootChild.RocketsChild:
             RocketsView(child.component)
+                .navigationBarHidden(true)
+                .navigationBarTitle(Text("Rockets"))
+                .edgesIgnoringSafeArea([.top, .bottom])
         case let child as RootChild.LaunchesChild:
-            EmptyView()
+            LaunchesView(child.component)
+                .navigationBarTitle("Launches", displayMode: .inline)
         default:
             EmptyView()
         }

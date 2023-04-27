@@ -1,3 +1,8 @@
 package ru.alexpanov.launches.api
 
-interface Launches
+import ru.alexpanov.core.flow.AnyStateFlow
+import ru.alexpanov.launches.api.data.LaunchesUiState
+
+interface Launches {
+    val state: AnyStateFlow<LaunchesUiState>
+}

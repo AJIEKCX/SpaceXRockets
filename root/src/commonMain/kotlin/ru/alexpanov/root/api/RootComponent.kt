@@ -14,6 +14,7 @@ import ru.alexpanov.core.repository.SettingsRepository
 import ru.alexpanov.core_network.provider.HttpClientProvider
 import ru.alexpanov.core_network.provider.JsonProvider
 import ru.alexpanov.launches.api.LaunchesComponent
+import ru.alexpanov.launches.api.LaunchesDependencies
 import ru.alexpanov.rockets.api.RocketsComponent
 import ru.alexpanov.rockets.api.RocketsDependencies
 import ru.alexpanov.root.internal.data.repository.DefaultSettingsRepository
@@ -55,7 +56,13 @@ class RootComponent(
             }
             is ScreenConfig.Launches -> {
                 Root.Child.LaunchesChild(
-                    LaunchesComponent(config.rocketId, componentContext)
+                    LaunchesComponent(
+                        rocketId = config.rocketId,
+                        dependencies = object : LaunchesDependencies {
+                            override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
+                        },
+                        componentContext = componentContext
+                    )
                 )
             }
         }

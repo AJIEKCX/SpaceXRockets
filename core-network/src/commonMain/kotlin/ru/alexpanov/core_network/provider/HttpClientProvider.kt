@@ -32,6 +32,6 @@ class HttpClientProvider(
     }
 
     companion object {
-        private const val endpoint = "https://api.spacexdata.com/v4/"
+        private const val endpoint = "https://api.spacexdata.com/"
     }
 }

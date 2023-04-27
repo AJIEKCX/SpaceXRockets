@@ -1,5 +1,6 @@
 package ru.alexpanov.spacex
 
+import RocketsScreen
 import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +10,8 @@ import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetpack.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
-import ru.alexpanov.root.api.RootComponent
 import ru.alexpanov.root.api.Root
+import ru.alexpanov.root.api.RootComponent
 
 class AndroidApp : Application()
 

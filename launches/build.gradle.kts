@@ -19,6 +19,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(projects.core)
                 implementation(projects.coreNetwork)
                 implementation(libs.decompose)
                 implementation(libs.koin.core)

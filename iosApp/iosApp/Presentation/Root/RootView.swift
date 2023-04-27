@@ -19,6 +19,7 @@ struct RootView: View {
             onBack: root.onBackClicked,
             childContent: ChildView.init
         )
+        .accentColor(.textPrimary)
         .preferredColorScheme(.dark)
     }
 }
@@ -32,7 +33,6 @@ private struct ChildView: View {
             RocketsView(child.component)
                 .navigationBarHidden(true)
                 .navigationBarTitle(Text("Rockets"))
-                .edgesIgnoringSafeArea([.top, .bottom])
         case let child as RootChild.LaunchesChild:
             LaunchesView(child.component)
                 .navigationBarTitle("Launches", displayMode: .inline)

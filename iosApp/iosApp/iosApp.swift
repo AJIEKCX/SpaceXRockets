@@ -4,23 +4,22 @@ import ComposeApp
 
 @main
 struct iosApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
-
-struct ContentView: View {
     let rootHolder = RootHolder()
     
-    var body: some View {
-        RootView(rootHolder.root)
-            .onAppear {
-              LifecycleRegistryExtKt.resume(rootHolder.lifecycle)
-            }
-            .onDisappear {
-              LifecycleRegistryExtKt.stop(rootHolder.lifecycle)
-            }
+    @Environment(\.scenePhase)
+    var scenePhase: ScenePhase
+    
+    var body: some Scene {
+        WindowGroup {
+            RootView(rootHolder.root)
+                .onChange(of: scenePhase) { newPhase in
+                    switch newPhase {
+                    case .background: LifecycleRegistryExtKt.stop(rootHolder.lifecycle)
+                    case .inactive: LifecycleRegistryExtKt.pause(rootHolder.lifecycle)
+                    case .active: LifecycleRegistryExtKt.resume(rootHolder.lifecycle)
+                    @unknown default: break
+                    }
+                }
+        }
     }
 }

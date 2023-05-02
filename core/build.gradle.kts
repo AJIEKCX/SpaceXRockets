@@ -21,6 +21,7 @@ kotlin {
             dependencies {
                 implementation(libs.decompose)
                 implementation(libs.kotlinx.coroutines.core)
+                api(libs.kotlinx.datetime)
             }
         }
         val commonTest by getting {
@@ -57,5 +58,13 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
+    }
+
+    compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+    }
+
+    dependencies {
+        coreLibraryDesugaring(libs.desugarJdkLibs)
     }
 }

@@ -6,3 +6,13 @@ plugins {
     alias(libs.plugins.kotlinx.serialization).apply(false)
     alias(libs.plugins.sqlDelight).apply(false)
 }
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        val mokoResourceVersion = libs.versions.mokoResources.get()
+        classpath("dev.icerock.moko:resources-generator:$mokoResourceVersion")
+    }
+}

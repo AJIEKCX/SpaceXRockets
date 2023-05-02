@@ -9,6 +9,7 @@ import ru.alexpanov.launches.internal.data.LaunchesRepository
 import ru.alexpanov.launches.internal.presentation.LaunchesFeature
 
 class LaunchesComponent(
+    override val rocketName: String,
     private val rocketId: String,
     private val dependencies: LaunchesDependencies,
     componentContext: ComponentContext

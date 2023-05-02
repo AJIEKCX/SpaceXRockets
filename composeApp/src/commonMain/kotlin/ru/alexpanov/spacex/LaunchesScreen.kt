@@ -1,5 +1,6 @@
 package ru.alexpanov.spacex
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,9 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.resources.ImageResource
+import dev.icerock.moko.resources.compose.painterResource
 import ru.alexpanov.launches.api.Launches
 import ru.alexpanov.launches.api.data.LaunchUiModel
 import ru.alexpanov.launches.api.data.LaunchesUiState
+import ru.alexpanov.launches.internal.domain.model.LaunchStatus
 
 @Composable
 fun LaunchesScreen(component: Launches) {
@@ -76,11 +81,35 @@ private fun LaunchCard(
             .fillMaxWidth(),
         shape = RoundedCornerShape(24.dp)
     ) {
-        Row(Modifier.padding(24.dp)) {
-            Column {
-                Text(launch.name, fontSize = 20.sp)
-                Text(launch.launchDate, fontSize = 16.sp)
+        Row(
+            modifier = Modifier.padding(24.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    launch.name,
+                    fontSize = 20.sp,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.h6
+                )
+                Text(
+                    launch.launchDate,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.body1,
+                    color = MaterialTheme.colors.textSecondary
+                )
             }
+            Image(
+                painterResource(launch.status.iconRes),
+                contentDescription = null
+            )
         }
     }
 }
+
+private val LaunchStatus.iconRes: ImageResource
+    get() = when (this) {
+        LaunchStatus.Success -> MR.images.launch_success
+        LaunchStatus.Error -> MR.images.launch_failure
+        LaunchStatus.Unknown -> MR.images.launch_unknown
+    }

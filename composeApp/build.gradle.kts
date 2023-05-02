@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.sqlDelight)
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -31,6 +32,7 @@ kotlin {
             isStatic = true
             export(libs.decompose)
             export(libs.essenty)
+            export(libs.moko.resources)
             export(projects.core)
             export(projects.root)
             export(projects.rockets)
@@ -63,6 +65,8 @@ kotlin {
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.multiplatformSettings)
                 implementation(libs.koin.core)
+                api(libs.moko.resources.compose)
+                api(libs.moko.resources)
                 api(libs.decompose)
                 api(libs.essenty)
             }
@@ -114,6 +118,10 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "ru.alexpanov.spacex"
 }
 
 android {

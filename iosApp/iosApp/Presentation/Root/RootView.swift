@@ -35,7 +35,7 @@ private struct ChildView: View {
                 .navigationBarTitle(Text("Rockets"))
         case let child as RootChild.LaunchesChild:
             LaunchesView(child.component)
-                .navigationBarTitle("Launches", displayMode: .inline)
+                .navigationBarTitle(child.component.rocketName, displayMode: .inline)
         default:
             EmptyView()
         }

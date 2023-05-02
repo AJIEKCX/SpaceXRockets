@@ -25,6 +25,7 @@ kotlin {
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.datetime)
             }
         }
         val commonTest by getting {

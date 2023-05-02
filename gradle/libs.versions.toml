@@ -16,6 +16,7 @@ koin = "3.4.0"
 sqlDelight = "2.0.0-alpha05"
 decompose = "2.0.0-alpha-02"
 essenty = "1.1.0"
+mokoResources = "0.22.0"
 
 [libraries]
 
@@ -42,6 +43,9 @@ decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decom
 decompose-compose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose" }
 decompose-compose-jetpack = { module = "com.arkivanov.decompose:extensions-compose-jetpack", version.ref = "decompose" }
 essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+moko-resources = { module = "dev.icerock.moko:resources", version.ref = "mokoResources" }
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
+desugarJdkLibs = "com.android.tools:desugar_jdk_libs:1.2.0"
 
 [plugins]
 
@@ -51,3 +55,4 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+moko-resources-plugin = { id = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }

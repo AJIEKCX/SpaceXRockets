@@ -48,8 +48,10 @@ class RootComponent(
                             override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
                             override val settingsRepository: SettingsRepository = DefaultSettingsRepository()
                         },
-                        onShowLaunches = { rocketId ->
-                            navigation.push(ScreenConfig.Launches(rocketId))
+                        onShowLaunches = { rocket ->
+                            navigation.push(
+                                ScreenConfig.Launches(rocketId = rocket.id, rocketName = rocket.name)
+                            )
                         },
                     )
                 )
@@ -57,6 +59,7 @@ class RootComponent(
             is ScreenConfig.Launches -> {
                 Root.Child.LaunchesChild(
                     LaunchesComponent(
+                        rocketName = config.rocketName,
                         rocketId = config.rocketId,
                         dependencies = object : LaunchesDependencies {
                             override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
@@ -75,6 +78,7 @@ sealed interface ScreenConfig : Parcelable {
 
     @Parcelize
     data class Launches(
-        val rocketId: String
+        val rocketId: String,
+        val rocketName: String
     ) : ScreenConfig
 }

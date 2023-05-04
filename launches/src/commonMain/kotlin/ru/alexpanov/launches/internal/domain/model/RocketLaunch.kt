@@ -2,7 +2,7 @@ package ru.alexpanov.launches.internal.domain.model
 
 import kotlinx.datetime.LocalDate
 
-data class RocketLaunch(
+internal data class RocketLaunch(
     val id: String,
     val rocketName: String,
     val launchDate: LocalDate,

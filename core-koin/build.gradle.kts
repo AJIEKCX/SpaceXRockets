@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
 }
 
@@ -19,14 +20,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(projects.core)
-                implementation(projects.coreNetwork)
-                implementation(projects.coreKoin)
-                implementation(libs.decompose)
                 implementation(libs.koin.core)
-                implementation(libs.ktor.core)
-                implementation(libs.kotlinx.serialization.json)
-                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.decompose)
             }
         }
         val commonTest by getting {
@@ -58,7 +53,7 @@ kotlin {
 }
 
 android {
-    namespace = "ru.alexpanov.settings"
+    namespace = "ru.alexpanov.core_koin"
     compileSdk = 33
     defaultConfig {
         minSdk = 24

@@ -19,8 +19,9 @@ dependencyResolutionManagement {
     }
 }
 include(":root")
-include(":core-network")
 include(":rockets")
 include(":launches")
 include(":settings")
+include(":core-koin")
+include(":core-network")
 include(":core")

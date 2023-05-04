@@ -22,6 +22,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(projects.core)
+                implementation(projects.coreKoin)
                 implementation(projects.coreNetwork)
                 implementation(projects.rockets)
                 implementation(projects.launches)

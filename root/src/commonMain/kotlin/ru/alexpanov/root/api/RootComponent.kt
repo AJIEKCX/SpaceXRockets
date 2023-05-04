@@ -12,23 +12,27 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
-import io.ktor.client.HttpClient
-import ru.alexpanov.core.repository.SettingsRepository
-import ru.alexpanov.core_network.provider.HttpClientProvider
-import ru.alexpanov.core_network.provider.JsonProvider
 import ru.alexpanov.launches.api.LaunchesComponent
-import ru.alexpanov.launches.api.LaunchesDependencies
 import ru.alexpanov.rockets.api.RocketsComponent
-import ru.alexpanov.rockets.api.RocketsDependencies
-import ru.alexpanov.root.internal.data.repository.DefaultSettingsRepository
+import ru.alexpanov.root.internal.di.dataModule
+import ru.alexpanov.root.internal.di.rootModule
 import ru.alexpanov.settings.api.DefaultSettingsComponent
-import ru.alexpanov.settings.api.SettingsDependencies
+import ru.kontur.core_koin.ComponentKoinContext
 
 class RootComponent(
     componentContext: ComponentContext
 ) : Root, ComponentContext by componentContext {
+    private val koinContext = instanceKeeper.getOrCreate {
+        ComponentKoinContext()
+    }
+
+    private val scope = koinContext.getOrCreateKoinScope(
+        listOf(rootModule, dataModule)
+    )
+
     private val navigation = StackNavigation<ScreenConfig>()
 
     override val childStack: Value<ChildStack<*, Root.Child>> = childStack(
@@ -63,10 +67,7 @@ class RootComponent(
                 Root.Child.RocketsChild(
                     RocketsComponent(
                         componentContext = componentContext,
-                        dependencies = object : RocketsDependencies {
-                            override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
-                            override val settingsRepository: SettingsRepository = DefaultSettingsRepository()
-                        },
+                        dependencies = scope.get(),
                         navigateLaunches = { rocket ->
                             navigation.push(
                                 ScreenConfig.Launches(rocketId = rocket.id, rocketName = rocket.name)
@@ -83,9 +84,7 @@ class RootComponent(
                     LaunchesComponent(
                         rocketName = config.rocketName,
                         rocketId = config.rocketId,
-                        dependencies = object : LaunchesDependencies {
-                            override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
-                        },
+                        dependencies = scope.get(),
                         componentContext = componentContext
                     )
                 )
@@ -103,10 +102,7 @@ class RootComponent(
                     DefaultSettingsComponent(
                         componentContext = componentContext,
                         onDismiss = slotNavigation::dismiss,
-                        dependencies = object : SettingsDependencies {
-                            override val settingsRepository: SettingsRepository
-                                get() = DefaultSettingsRepository()
-                        }
+                        dependencies = scope.get()
                     )
                 )
             }

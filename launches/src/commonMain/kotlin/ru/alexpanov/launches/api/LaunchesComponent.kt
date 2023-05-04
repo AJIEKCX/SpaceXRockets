@@ -2,24 +2,30 @@ package ru.alexpanov.launches.api
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
+import org.koin.core.parameter.parametersOf
 import ru.alexpanov.core.flow.AnyStateFlow
-import ru.alexpanov.core_network.api.DefaultSpaceXApi
 import ru.alexpanov.launches.api.data.LaunchesUiState
-import ru.alexpanov.launches.internal.data.LaunchesRepository
+import ru.alexpanov.launches.internal.di.createLaunchesModules
 import ru.alexpanov.launches.internal.presentation.LaunchesFeature
+import ru.kontur.core_koin.ComponentKoinContext
 
 class LaunchesComponent(
     override val rocketName: String,
     private val rocketId: String,
-    private val dependencies: LaunchesDependencies,
+    dependencies: LaunchesDependencies,
     componentContext: ComponentContext
 ) : Launches, ComponentContext by componentContext {
-    private val viewModel = instanceKeeper.getOrCreate {
-        LaunchesFeature(
-            rocketId = rocketId,
-            launchesRepository = LaunchesRepository(DefaultSpaceXApi(dependencies.httpClient)),
-        )
+    private val koinContext = instanceKeeper.getOrCreate {
+        ComponentKoinContext()
     }
 
-    override val state: AnyStateFlow<LaunchesUiState> = viewModel.state
+    private val scope = koinContext.getOrCreateKoinScope(
+        createLaunchesModules(dependencies)
+    )
+
+    private val feature: LaunchesFeature = instanceKeeper.getOrCreate {
+        scope.get(parameters = { parametersOf(rocketId) })
+    }
+
+    override val state: AnyStateFlow<LaunchesUiState> = feature.state
 }

@@ -1,9 +1,11 @@
 package ru.alexpanov.rockets.api
 
-import io.ktor.client.HttpClient
 import ru.alexpanov.core.repository.SettingsRepository
+import ru.alexpanov.core_network.api.SpaceXApi
+import ru.alexpanov.rockets.api.data.RocketsMemoryCache
 
 interface RocketsDependencies {
-    val httpClient: HttpClient
+    val spaceXApi: SpaceXApi
     val settingsRepository: SettingsRepository
+    val memoryCache: RocketsMemoryCache
 }

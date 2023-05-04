@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62233CFD2A02C7CF00F3A7D1 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233CFC2A02C7CF00F3A7D1 /* View.swift */; };
 		622386EA29F5A864001FC942 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386E929F5A864001FC942 /* RootView.swift */; };
 		622386F129F5A90C001FC942 /* MutableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386EC29F5A90C001FC942 /* MutableValue.swift */; };
 		622386F229F5A90C001FC942 /* SimpleChildStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386ED29F5A90C001FC942 /* SimpleChildStack.swift */; };
@@ -15,6 +16,7 @@
 		622386FB29F5AADC001FC942 /* RocketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622386FA29F5AADC001FC942 /* RocketsView.swift */; };
 		6226CF7B29F6F50C00ADA4F4 /* RocketContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */; };
 		6226CF7E29F6FE3300ADA4F4 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */; };
+		62453BBA2A019963007224A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62453BB92A019963007224A9 /* SettingsView.swift */; };
 		62926DD029F8511B00D262A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DCF29F8511B00D262A9 /* Color.swift */; };
 		62926DD329F8638E00D262A9 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD229F8638E00D262A9 /* AppButton.swift */; };
 		62926DD529FA586E00D262A9 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD429FA586E00D262A9 /* StackView.swift */; };
@@ -28,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		05E67C72B2BDBC81379103CB /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		62233CFC2A02C7CF00F3A7D1 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		622386E929F5A864001FC942 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		622386EC29F5A90C001FC942 /* MutableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableValue.swift; sourceTree = "<group>"; };
 		622386ED29F5A90C001FC942 /* SimpleChildStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleChildStack.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		622386FA29F5AADC001FC942 /* RocketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsView.swift; sourceTree = "<group>"; };
 		6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketContentView.swift; sourceTree = "<group>"; };
 		6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
+		62453BB92A019963007224A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		62926DCF29F8511B00D262A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62926DD229F8638E00D262A9 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		62926DD429FA586E00D262A9 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62233CFB2A02C7C000F3A7D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				62233CFC2A02C7CF00F3A7D1 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		622386EB29F5A8E9001FC942 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +88,8 @@
 		622386F629F5AAA4001FC942 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				62233CFB2A02C7C000F3A7D1 /* Extensions */,
+				62453BB82A01994C007224A9 /* Settings */,
 				62926DD129F8637F00D262A9 /* Widget */,
 				6226CF7C29F6FE2100ADA4F4 /* Common */,
 				622386F929F5AAC5001FC942 /* Launches */,
@@ -118,6 +132,14 @@
 				62926DCF29F8511B00D262A9 /* Color.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		62453BB82A01994C007224A9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				62453BB92A019963007224A9 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		62926DD129F8637F00D262A9 /* Widget */ = {
@@ -315,6 +337,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62233CFD2A02C7CF00F3A7D1 /* View.swift in Sources */,
+				62453BBA2A019963007224A9 /* SettingsView.swift in Sources */,
 				622386F129F5A90C001FC942 /* MutableValue.swift in Sources */,
 				622386F529F5A90C001FC942 /* ObservableStateFlow.swift in Sources */,
 				62926DD029F8511B00D262A9 /* Color.swift in Sources */,

@@ -30,7 +30,7 @@ fun RocketsScreen(component: Rockets) {
                     Column {
                         Text(text = "Rockets")
                         Button(onClick = {
-                            component.onShowLaunchesClicked(state.rockets.first().id)
+                            component.onLaunchesClick(state.rockets.first().id)
                         }) {
                             Text("Show launches")
                         }

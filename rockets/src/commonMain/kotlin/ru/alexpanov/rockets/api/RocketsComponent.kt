@@ -12,7 +12,8 @@ import ru.alexpanov.rockets.internal.presentation.RocketsFeature
 class RocketsComponent(
     componentContext: ComponentContext,
     private val dependencies: RocketsDependencies,
-    private val onShowLaunches: (RocketUiModel) -> Unit
+    private val navigateLaunches: (RocketUiModel) -> Unit,
+    private val navigateSettings: () -> Unit,
 ) : Rockets, ComponentContext by componentContext {
     private val viewModel = instanceKeeper.getOrCreate {
         RocketsFeature(
@@ -22,9 +23,13 @@ class RocketsComponent(
     }
     override val state: AnyStateFlow<RocketsUiState> = viewModel.state
 
-    override fun onShowLaunchesClicked(rocketId: String) {
+    override fun onLaunchesClick(rocketId: String) {
         val data = state.value as? RocketsUiState.Data ?: return
         val rocket = data.rockets.single { it.id == rocketId }
-        onShowLaunches(rocket)
+        navigateLaunches(rocket)
+    }
+
+    override fun onSettingsClick() {
+        navigateSettings()
     }
 }

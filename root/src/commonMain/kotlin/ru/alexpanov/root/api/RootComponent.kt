@@ -1,6 +1,11 @@
 package ru.alexpanov.root.api
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.slot.ChildSlot
+import com.arkivanov.decompose.router.slot.SlotNavigation
+import com.arkivanov.decompose.router.slot.activate
+import com.arkivanov.decompose.router.slot.childSlot
+import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
@@ -18,6 +23,8 @@ import ru.alexpanov.launches.api.LaunchesDependencies
 import ru.alexpanov.rockets.api.RocketsComponent
 import ru.alexpanov.rockets.api.RocketsDependencies
 import ru.alexpanov.root.internal.data.repository.DefaultSettingsRepository
+import ru.alexpanov.settings.api.DefaultSettingsComponent
+import ru.alexpanov.settings.api.SettingsDependencies
 
 class RootComponent(
     componentContext: ComponentContext
@@ -30,6 +37,18 @@ class RootComponent(
         initialStack = { listOf(ScreenConfig.Rockets) },
         childFactory = ::child,
     )
+
+    private val slotNavigation = SlotNavigation<SlotConfig>()
+
+    override val childSlot: Value<ChildSlot<*, Root.SlotChild>> = childSlot(
+        source = slotNavigation,
+        handleBackButton = true,
+        childFactory = ::child
+    )
+
+    override fun dismissOverlay() {
+        slotNavigation.dismiss()
+    }
 
     override fun onBackClicked() {
         navigation.pop()
@@ -48,11 +67,14 @@ class RootComponent(
                             override val httpClient: HttpClient = HttpClientProvider(JsonProvider().get()).get()
                             override val settingsRepository: SettingsRepository = DefaultSettingsRepository()
                         },
-                        onShowLaunches = { rocket ->
+                        navigateLaunches = { rocket ->
                             navigation.push(
                                 ScreenConfig.Launches(rocketId = rocket.id, rocketName = rocket.name)
                             )
                         },
+                        navigateSettings = {
+                            slotNavigation.activate(SlotConfig.Settings)
+                        }
                     )
                 )
             }
@@ -70,6 +92,26 @@ class RootComponent(
             }
         }
     }
+
+    private fun child(
+        config: SlotConfig,
+        componentContext: ComponentContext
+    ): Root.SlotChild {
+        return when (config) {
+            is SlotConfig.Settings -> {
+                Root.SlotChild.SettingsChild(
+                    DefaultSettingsComponent(
+                        componentContext = componentContext,
+                        onDismiss = slotNavigation::dismiss,
+                        dependencies = object : SettingsDependencies {
+                            override val settingsRepository: SettingsRepository
+                                get() = DefaultSettingsRepository()
+                        }
+                    )
+                )
+            }
+        }
+    }
 }
 
 sealed interface ScreenConfig : Parcelable {
@@ -81,4 +123,9 @@ sealed interface ScreenConfig : Parcelable {
         val rocketId: String,
         val rocketName: String
     ) : ScreenConfig
+}
+
+sealed interface SlotConfig : Parcelable {
+    @Parcelize
+    object Settings : SlotConfig
 }

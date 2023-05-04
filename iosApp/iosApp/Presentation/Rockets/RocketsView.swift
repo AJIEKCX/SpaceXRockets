@@ -3,12 +3,14 @@ import ComposeApp
 
 struct RocketsView: View {
     let component: Rockets
-    @ObservedObject
-    private var observableState: ObservableStateFlow<RocketsUiState>
+    
+    @ObservedObject private var observableState: ObservableStateFlow<RocketsUiState>
     
     init(_ component: Rockets) {
         self.component = component
         observableState = .init(component.state)
+        
+        UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
     }
     
     var body: some View {
@@ -30,7 +32,8 @@ struct RocketsView: View {
             ForEach(rockets, id: \.self) { rocket in
                 RocketContentView(
                     rocket: rocket,
-                    onShowLaunchesClicked: component.onShowLaunchesClicked
+                    onLaunchesClick: component.onLaunchesClick,
+                    onSettingsClick: component.onSettingsClick
                 )
             }
         }

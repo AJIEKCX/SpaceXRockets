@@ -3,13 +3,18 @@ import SwiftUI
 
 struct RootView: View {
     private let root: Root
-    @ObservedObject private var childStack: ObservableValue<ChildStack<AnyObject, RootChild>>
+    @ObservedObject
+    private var childStack: ObservableValue<ChildStack<AnyObject, RootChild>>
+    
+    @ObservedObject
+    private var childSlot: ObservableValue<ChildSlot<AnyObject, RootSlotChild>>
     
     private var stack: ChildStack<AnyObject, RootChild> { childStack.value }
     
     init(_ root: Root) {
         self.root = root
         childStack = .init(root.childStack)
+        childSlot = .init(root.childSlot)
     }
     
     var body: some View {
@@ -21,6 +26,19 @@ struct RootView: View {
         )
         .accentColor(.textPrimary)
         .preferredColorScheme(.dark)
+        .sheet(
+            item: childSlot.value.child?.instance,
+            onDismiss: { root.dismissOverlay() },
+            content: { child in
+                switch child {
+                case let child as RootSlotChild.SettingsChild:
+                    SettingsView(child.component)
+                default:
+                  EmptyView()
+                }
+            }
+        )
+
     }
 }
 

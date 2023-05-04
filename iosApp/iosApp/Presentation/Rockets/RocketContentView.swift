@@ -3,7 +3,8 @@ import ComposeApp
 
 struct RocketContentView: View {
     let rocket: RocketUiModel
-    let onShowLaunchesClicked: (String) -> Void
+    let onLaunchesClick: (String) -> Void
+    let onSettingsClick: () -> Void
     
     var body: some View {
         ScrollView {
@@ -19,12 +20,22 @@ struct RocketContentView: View {
                 .frame(height: 250, alignment: .top)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(rocket.name)
-                        .font(.system(size: 24))
-                        .foregroundColor(.textPrimary)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding([.top], 48)
-                        .padding([.leading], 32)
+                    HStack {
+                        Text(rocket.name)
+                            .font(.system(size: 24))
+                            .foregroundColor(.textPrimary)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+
+                        Image(systemName: "gearshape")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .onTapGesture {
+                                onSettingsClick()
+                            }
+                    }
+                    .padding([.top], 48)
+                    .padding([.horizontal], 32)
+                 
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
@@ -54,7 +65,7 @@ struct RocketContentView: View {
                     
                     AppButton(
                         title: "Show launches",
-                        onClick: { onShowLaunchesClicked(rocket.id) }
+                        onClick: { onLaunchesClick(rocket.id) }
                     )
                     .padding([.vertical], 40)
                     .padding([.horizontal], 32)
@@ -142,9 +153,3 @@ struct RocketStageCell: View {
         }
     }
 }
-
-//struct RocketView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RocketView()
-//    }
-//}

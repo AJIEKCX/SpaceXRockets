@@ -1,8 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.serialization")
     id("com.android.library")
-    id("kotlin-parcelize")
 }
 
 kotlin {
@@ -23,9 +21,6 @@ kotlin {
             dependencies {
                 implementation(projects.core)
                 implementation(projects.coreNetwork)
-                implementation(projects.rockets)
-                implementation(projects.launches)
-                implementation(projects.settings)
                 implementation(libs.decompose)
                 implementation(libs.koin.core)
                 implementation(libs.ktor.core)
@@ -62,7 +57,7 @@ kotlin {
 }
 
 android {
-    namespace = "ru.alexpanov.root"
+    namespace = "ru.alexpanov.settings"
     compileSdk = 33
     defaultConfig {
         minSdk = 24

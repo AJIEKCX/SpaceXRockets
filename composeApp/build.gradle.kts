@@ -37,6 +37,7 @@ kotlin {
             export(projects.root)
             export(projects.rockets)
             export(projects.launches)
+            export(projects.settings)
         }
         extraSpecAttributes["resources"] = "['src/commonMain/resources/**']"
     }
@@ -53,6 +54,7 @@ kotlin {
                 implementation(projects.root)
                 implementation(projects.rockets)
                 implementation(projects.launches)
+                implementation(projects.settings)
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
@@ -105,6 +107,7 @@ kotlin {
                 api(projects.root)
                 api(projects.rockets)
                 api(projects.launches)
+                api(projects.settings)
             }
         }
 

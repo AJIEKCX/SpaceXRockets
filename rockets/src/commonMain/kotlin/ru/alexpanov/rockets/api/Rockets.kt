@@ -6,5 +6,6 @@ import ru.alexpanov.rockets.api.data.RocketsUiState
 interface Rockets {
     val state: AnyStateFlow<RocketsUiState>
 
-    fun onShowLaunchesClicked(rocketId: String)
+    fun onLaunchesClick(rocketId: String)
+    fun onSettingsClick()
 }

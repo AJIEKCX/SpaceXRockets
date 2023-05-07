@@ -25,6 +25,18 @@ val Colors.textSecondary
     @Composable
     get() = Color(0xFF8E8E8F)
 
+val Colors.textTertiary
+    @Composable
+    get() = Color(0xFFCACACA)
+
+val Colors.cardPrimary
+    @Composable
+    get() = Color(0xFF212121)
+
+val Colors.pagerIndicatorBackground
+    @Composable
+    get() = Color(0xFF121212)
+
 @Composable
 fun rememberTypography(): Typography {
     val regularFontFamily = fontFamilyResource(MR.fonts.LabGrotesque.regular)
@@ -64,6 +76,13 @@ fun rememberTypography(): Typography {
                 fontWeight = FontWeight.Normal,
                 fontSize = 24.sp,
                 lineHeight = 32.sp,
+                lineHeightStyle = lineHeightStyle
+            ),
+            button = TextStyle(
+                fontFamily = boldFontFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                lineHeight = 28.sp,
                 lineHeightStyle = lineHeightStyle
             ),
         )

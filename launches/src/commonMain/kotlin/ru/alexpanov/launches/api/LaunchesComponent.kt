@@ -12,6 +12,7 @@ import ru.kontur.core_koin.ComponentKoinContext
 class LaunchesComponent(
     override val rocketName: String,
     private val rocketId: String,
+    private val navigateBack: () -> Unit,
     dependencies: LaunchesDependencies,
     componentContext: ComponentContext
 ) : Launches, ComponentContext by componentContext {
@@ -28,4 +29,8 @@ class LaunchesComponent(
     }
 
     override val state: AnyStateFlow<LaunchesUiState> = feature.state
+
+    override fun onBackClicked() {
+        navigateBack()
+    }
 }

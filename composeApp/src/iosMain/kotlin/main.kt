@@ -1,8 +1,13 @@
 import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
 import ru.alexpanov.launches.api.Launches
-import ru.alexpanov.spacex.LaunchesScreen
+import ru.alexpanov.spacex.AppTheme
+import ru.alexpanov.spacex.launches.LaunchesScreen
 
 fun LaunchesViewController(component: Launches): UIViewController {
-    return ComposeUIViewController { LaunchesScreen(component) }
+    return ComposeUIViewController {
+        AppTheme {
+            LaunchesScreen(component)
+        }
+    }
 }

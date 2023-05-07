@@ -85,6 +85,7 @@ class RootComponent(
                         rocketName = config.rocketName,
                         rocketId = config.rocketId,
                         dependencies = scope.get(),
+                        navigateBack = navigation::pop,
                         componentContext = componentContext
                     )
                 )

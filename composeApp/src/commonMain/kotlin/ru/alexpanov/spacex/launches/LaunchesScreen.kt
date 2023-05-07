@@ -1,4 +1,4 @@
-package ru.alexpanov.spacex
+package ru.alexpanov.spacex.launches
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -29,14 +30,25 @@ import ru.alexpanov.launches.api.Launches
 import ru.alexpanov.launches.api.data.LaunchUiModel
 import ru.alexpanov.launches.api.data.LaunchesUiState
 import ru.alexpanov.launches.internal.domain.model.LaunchStatus
+import ru.alexpanov.spacex.MR
+import ru.alexpanov.spacex.textSecondary
 
 @Composable
-fun LaunchesScreen(component: Launches) {
+fun LaunchesScreen(
+    component: Launches,
+    topBarContent: @Composable (component: Launches) -> Unit = {},
+    modifier: Modifier = Modifier
+) {
     val uiState by component.state.collectAsState()
 
-    AppTheme {
+    Scaffold(
+        modifier = modifier,
+        topBar = { topBarContent(component) }
+    ) { contentPadding ->
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .padding(contentPadding)
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
             when (val state = uiState) {

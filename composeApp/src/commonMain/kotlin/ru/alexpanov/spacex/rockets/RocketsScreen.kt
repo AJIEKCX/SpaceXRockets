@@ -1,0 +1,92 @@
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import ru.alexpanov.rockets.api.Rockets
+import ru.alexpanov.rockets.api.data.RocketUiModel
+import ru.alexpanov.rockets.api.data.RocketsUiState
+import ru.alexpanov.spacex.insets.navBarsPadding
+import ru.alexpanov.spacex.pagerIndicatorBackground
+import ru.alexpanov.spacex.rockets.RocketContent
+import ru.alexpanov.spacex.widget.HorizontalPagerIndicator
+
+@Composable
+fun RocketsScreen(component: Rockets) {
+    val uiState by component.state.collectAsState()
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        when (val state = uiState) {
+            is RocketsUiState.Loading -> {
+                CircularProgressIndicator(
+                    color = MaterialTheme.colors.onBackground
+                )
+            }
+            is RocketsUiState.Data -> {
+                RocketsContent(
+                    rockets = state.rockets,
+                    onLaunchesClick = component::onLaunchesClick
+                )
+            }
+            is RocketsUiState.Error -> {
+                Text("Error")
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun RocketsContent(
+    rockets: List<RocketUiModel>,
+    onLaunchesClick: (rocketId: String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier.fillMaxSize()) {
+        val pagerState = rememberPagerState()
+        HorizontalPager(
+            pageCount = rockets.size,
+            state = pagerState,
+            key = { index -> rockets[index].id },
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        ) { page ->
+            val rocket = rockets[page]
+            RocketContent(
+                rocket = rocket,
+                onShowLaunchesClick = { onLaunchesClick(rocket.id) }
+            )
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colors.pagerIndicatorBackground)
+                .navBarsPadding(),
+        ) {
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                pageCount = rockets.size,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(vertical = 24.dp)
+            )
+        }
+    }
+}

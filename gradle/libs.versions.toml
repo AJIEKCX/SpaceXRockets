@@ -17,6 +17,7 @@ sqlDelight = "2.0.0-alpha05"
 decompose = "2.0.0-alpha-02"
 essenty = "1.1.0"
 mokoResources = "0.22.0"
+accompanist = "0.31.1-alpha"
 
 [libraries]
 
@@ -45,6 +46,8 @@ decompose-compose-jetpack = { module = "com.arkivanov.decompose:extensions-compo
 essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 moko-resources = { module = "dev.icerock.moko:resources", version.ref = "mokoResources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
+accompanist-systemui = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+coil-compose = "io.coil-kt:coil-compose:2.3.0"
 desugarJdkLibs = "com.android.tools:desugar_jdk_libs:1.2.0"
 
 [plugins]

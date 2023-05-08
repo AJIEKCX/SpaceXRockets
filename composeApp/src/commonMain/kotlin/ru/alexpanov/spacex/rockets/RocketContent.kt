@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,9 +27,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.painterResource
 import ru.alexpanov.rockets.api.data.RocketParamUiModel
 import ru.alexpanov.rockets.api.data.RocketStageUiModel
 import ru.alexpanov.rockets.api.data.RocketUiModel
+import ru.alexpanov.spacex.MR
 import ru.alexpanov.spacex.cardPrimary
 import ru.alexpanov.spacex.textSecondary
 import ru.alexpanov.spacex.textTertiary
@@ -37,6 +41,7 @@ import ru.alexpanov.spacex.widget.RocketImage
 fun RocketContent(
     rocket: RocketUiModel,
     onShowLaunchesClick: () -> Unit,
+    onShowSettingsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -57,16 +62,24 @@ fun RocketContent(
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
                 .background(MaterialTheme.colors.background)
         ) {
-            Text(
-                rocket.name,
-                style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(start = 32.dp, top = 48.dp)
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(start = 32.dp, top = 48.dp, end = 24.dp)
+            ) {
+                Text(
+                    rocket.name,
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier.weight(1f)
+                )
+                IconButton(onClick = onShowSettingsClick) {
+                    Icon(painterResource(MR.images.settings), contentDescription = null)
+                }
+            }
+
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(horizontal = 32.dp),
-                modifier = Modifier
-                    .padding(top = 32.dp, bottom = 40.dp)
+                modifier = Modifier.padding(top = 32.dp, bottom = 40.dp)
             ) {
                 items(rocket.params) { param ->
                     RocketParamCard(param)

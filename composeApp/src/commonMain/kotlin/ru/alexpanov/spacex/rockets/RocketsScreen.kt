@@ -41,7 +41,8 @@ fun RocketsScreen(component: Rockets) {
             is RocketsUiState.Data -> {
                 RocketsContent(
                     rockets = state.rockets,
-                    onLaunchesClick = component::onLaunchesClick
+                    onLaunchesClick = component::onLaunchesClick,
+                    onSettingsClick = component::onSettingsClick
                 )
             }
             is RocketsUiState.Error -> {
@@ -56,6 +57,7 @@ fun RocketsScreen(component: Rockets) {
 private fun RocketsContent(
     rockets: List<RocketUiModel>,
     onLaunchesClick: (rocketId: String) -> Unit,
+    onSettingsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier.fillMaxSize()) {
@@ -71,7 +73,8 @@ private fun RocketsContent(
             val rocket = rockets[page]
             RocketContent(
                 rocket = rocket,
-                onShowLaunchesClick = { onLaunchesClick(rocket.id) }
+                onShowLaunchesClick = { onLaunchesClick(rocket.id) },
+                onShowSettingsClick = onSettingsClick
             )
         }
         Box(

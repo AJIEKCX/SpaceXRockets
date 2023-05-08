@@ -50,7 +50,7 @@ class RootComponent(
         childFactory = ::child
     )
 
-    override fun dismissOverlay() {
+    override fun dismissSlotChild() {
         slotNavigation.dismiss()
     }
 

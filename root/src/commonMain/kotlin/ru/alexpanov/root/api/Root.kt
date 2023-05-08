@@ -12,7 +12,7 @@ interface Root {
 
     val childSlot: Value<ChildSlot<*, SlotChild>>
 
-    fun dismissOverlay()
+    fun dismissSlotChild()
 
     sealed class SlotChild {
         class SettingsChild(val component: SettingsComponent) : SlotChild()

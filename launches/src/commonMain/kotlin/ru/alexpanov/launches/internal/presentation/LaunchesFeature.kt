@@ -20,15 +20,22 @@ internal class LaunchesFeature(
         loadLaunches()
     }
 
+    fun onTryAgainClick() {
+        loadLaunches()
+    }
+
     private fun loadLaunches() {
         coroutineScope.launch {
+            _state.value = LaunchesUiState.Loading
             runCatchingCancellable {
                 launchesRepository.getLaunches(rocketId)
             }.onSuccess { launches ->
-                _state.value = LaunchesUiState.Data(launches.map { it.toUiModel() })
+                if (launches.isEmpty()) {
+                    _state.value = LaunchesUiState.Empty
+                } else {
+                    _state.value = LaunchesUiState.Data(launches.map { it.toUiModel() })
+                }
             }.onFailure {
-                // TODO: DELETE
-                it.printStackTrace()
                 _state.value = LaunchesUiState.Error
             }
         }

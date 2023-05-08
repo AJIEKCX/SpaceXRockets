@@ -8,4 +8,6 @@ interface Launches {
     val state: AnyStateFlow<LaunchesUiState>
 
     fun onBackClicked()
+
+    fun onTryAgainClick()
 }

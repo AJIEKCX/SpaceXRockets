@@ -24,6 +24,10 @@ internal class RocketsFeature(
         observeSettings()
     }
 
+    fun onTryAgainClick() {
+        loadRockets(settings = settingsRepository.currentSettings)
+    }
+
     private fun observeSettings() {
         settingsRepository
             .observeRocketSettings()
@@ -33,13 +37,12 @@ internal class RocketsFeature(
 
     private fun loadRockets(settings: RocketSettings) {
         coroutineScope.launch {
+            _state.value = RocketsUiState.Loading
             runCatchingCancellable {
                 rocketRepository.getRockets()
             }.onSuccess { rockets ->
                 _state.value = RocketsUiState.Data(rockets.map { it.toUiModel(settings) })
             }.onFailure {
-                // TODO: DELETE
-                it.printStackTrace()
                 _state.value = RocketsUiState.Error
             }
         }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="error_stub_text">Something went wrong</string>
+    <string name="error_stub_repeat_btn">Try again</string>
+    <string name="launches_empty">There are no launches yet</string>
+</resources>

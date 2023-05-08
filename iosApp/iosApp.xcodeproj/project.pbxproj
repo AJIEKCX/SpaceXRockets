@@ -24,6 +24,7 @@
 		62926DD529FA586E00D262A9 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD429FA586E00D262A9 /* StackView.swift */; };
 		62926DD729FA6D0E00D262A9 /* LaunchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD629FA6D0E00D262A9 /* LaunchesView.swift */; };
 		62A02C3B29F28E7F00CEC9F4 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A02C3A29F28E7F00CEC9F4 /* RootHolder.swift */; };
+		62F1617D2A097C1B000B0C3C /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1617C2A097C1B000B0C3C /* ErrorView.swift */; };
 		A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A953A29CC810C00F8E227 /* iosApp.swift */; };
 		A93A953F29CC810D00F8E227 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A93A953E29CC810D00F8E227 /* Assets.xcassets */; };
 		A93A954229CC810D00F8E227 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A93A954129CC810D00F8E227 /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		62926DD429FA586E00D262A9 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		62926DD629FA6D0E00D262A9 /* LaunchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesView.swift; sourceTree = "<group>"; };
 		62A02C3A29F28E7F00CEC9F4 /* RootHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootHolder.swift; sourceTree = "<group>"; };
+		62F1617C2A097C1B000B0C3C /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		73FFDDCA9C728FEE3DFEF2F4 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A93A953729CC810C00F8E227 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93A953A29CC810C00F8E227 /* iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosApp.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				62926DD229F8638E00D262A9 /* AppButton.swift */,
+				62F1617C2A097C1B000B0C3C /* ErrorView.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				622386F129F5A90C001FC942 /* MutableValue.swift in Sources */,
 				622386F529F5A90C001FC942 /* ObservableStateFlow.swift in Sources */,
 				62926DD029F8511B00D262A9 /* Color.swift in Sources */,
+				62F1617D2A097C1B000B0C3C /* ErrorView.swift in Sources */,
 				62926DD729FA6D0E00D262A9 /* LaunchesView.swift in Sources */,
 				62926DD329F8638E00D262A9 /* AppButton.swift in Sources */,
 				622386FB29F5AADC001FC942 /* RocketsView.swift in Sources */,

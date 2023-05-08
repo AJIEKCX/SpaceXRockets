@@ -16,8 +16,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -37,6 +35,7 @@ import ru.alexpanov.spacex.MR
 import ru.alexpanov.spacex.theme.cardPrimary
 import ru.alexpanov.spacex.theme.textSecondary
 import ru.alexpanov.spacex.theme.textTertiary
+import ru.alexpanov.spacex.widget.AppButton
 import ru.alexpanov.spacex.widget.RocketImage
 
 @Composable
@@ -114,17 +113,9 @@ fun RocketContent(
                 stage = rocket.secondStage,
                 modifier = Modifier.padding(horizontal = 32.dp, vertical = 40.dp)
             )
-            Button(
+            AppButton(
                 onClick = onShowLaunchesClick,
-                modifier = Modifier
-                    .padding(horizontal = 32.dp)
-                    .fillMaxWidth()
-                    .height(56.dp),
-                elevation = ButtonDefaults.elevation(defaultElevation = 0.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.cardPrimary
-                ),
-                shape = RoundedCornerShape(12.dp)
+                modifier = Modifier.padding(horizontal = 32.dp)
             ) {
                 Text(
                     text = stringResource(RocketsR.strings.rocket_show_launches_btn),

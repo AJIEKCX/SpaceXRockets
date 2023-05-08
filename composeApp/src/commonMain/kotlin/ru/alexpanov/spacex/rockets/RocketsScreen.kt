@@ -22,6 +22,8 @@ import ru.alexpanov.rockets.api.data.RocketsUiState
 import ru.alexpanov.spacex.insets.navBarsPadding
 import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.rockets.RocketContent
+import ru.alexpanov.spacex.widget.AppProgressBar
+import ru.alexpanov.spacex.widget.ErrorStub
 import ru.alexpanov.spacex.widget.HorizontalPagerIndicator
 
 @Composable
@@ -34,9 +36,7 @@ fun RocketsScreen(component: Rockets) {
     ) {
         when (val state = uiState) {
             is RocketsUiState.Loading -> {
-                CircularProgressIndicator(
-                    color = MaterialTheme.colors.onBackground
-                )
+                AppProgressBar()
             }
             is RocketsUiState.Data -> {
                 RocketsContent(
@@ -46,7 +46,7 @@ fun RocketsScreen(component: Rockets) {
                 )
             }
             is RocketsUiState.Error -> {
-                Text("Error")
+                ErrorStub(onClick = component::onTryAgainClick)
             }
         }
     }

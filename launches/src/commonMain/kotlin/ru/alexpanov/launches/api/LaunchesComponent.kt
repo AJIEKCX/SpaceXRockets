@@ -33,4 +33,8 @@ class LaunchesComponent(
     override fun onBackClicked() {
         navigateBack()
     }
+
+    override fun onTryAgainClick() {
+        feature.onTryAgainClick()
+    }
 }

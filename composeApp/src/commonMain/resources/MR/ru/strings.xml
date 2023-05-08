@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="error_stub_text">Что-то пошло не так</string>
+    <string name="error_stub_repeat_btn">Попробовать снова</string>
+    <string name="launches_empty">Запусков еще не было</string>
+</resources>

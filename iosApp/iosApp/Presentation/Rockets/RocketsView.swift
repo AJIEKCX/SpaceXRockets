@@ -18,7 +18,7 @@ struct RocketsView: View {
         case is RocketsUiState.Loading:
             ProgressView()
         case is RocketsUiState.Error:
-            Text("Error")
+            ErrorView(onClick: component.onTryAgainClick)
         case let data as RocketsUiState.Data:
             content(rockets: data.rockets)
         default:

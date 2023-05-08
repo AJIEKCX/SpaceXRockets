@@ -36,4 +36,8 @@ class RocketsComponent(
     override fun onSettingsClick() {
         navigateSettings()
     }
+
+    override fun onTryAgainClick() {
+        feature.onTryAgainClick()
+    }
 }

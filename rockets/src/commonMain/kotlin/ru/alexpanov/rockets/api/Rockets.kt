@@ -8,4 +8,6 @@ interface Rockets {
 
     fun onLaunchesClick(rocketId: String)
     fun onSettingsClick()
+
+    fun onTryAgainClick()
 }

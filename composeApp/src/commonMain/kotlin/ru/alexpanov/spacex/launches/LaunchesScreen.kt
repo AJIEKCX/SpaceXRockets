@@ -26,12 +26,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 import ru.alexpanov.launches.api.Launches
 import ru.alexpanov.launches.api.data.LaunchUiModel
 import ru.alexpanov.launches.api.data.LaunchesUiState
 import ru.alexpanov.launches.internal.domain.model.LaunchStatus
 import ru.alexpanov.spacex.MR
 import ru.alexpanov.spacex.theme.textSecondary
+import ru.alexpanov.spacex.widget.AppProgressBar
+import ru.alexpanov.spacex.widget.EmptyStub
+import ru.alexpanov.spacex.widget.ErrorStub
 
 @Composable
 fun LaunchesScreen(
@@ -53,13 +57,16 @@ fun LaunchesScreen(
         ) {
             when (val state = uiState) {
                 is LaunchesUiState.Loading -> {
-                    CircularProgressIndicator()
+                    AppProgressBar()
                 }
                 is LaunchesUiState.Data -> {
                     LaunchesContent(state.launches)
                 }
+                is LaunchesUiState.Empty -> {
+                    EmptyStub(title = stringResource(MR.strings.launches_empty))
+                }
                 is LaunchesUiState.Error -> {
-                    Text("Error")
+                    ErrorStub(onClick = component::onTryAgainClick)
                 }
             }
         }

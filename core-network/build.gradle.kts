@@ -22,6 +22,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.client.json)
+                implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)

@@ -31,7 +31,7 @@ import ru.alexpanov.launches.api.data.LaunchUiModel
 import ru.alexpanov.launches.api.data.LaunchesUiState
 import ru.alexpanov.launches.internal.domain.model.LaunchStatus
 import ru.alexpanov.spacex.MR
-import ru.alexpanov.spacex.textSecondary
+import ru.alexpanov.spacex.theme.textSecondary
 
 @Composable
 fun LaunchesScreen(

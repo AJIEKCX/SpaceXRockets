@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="settings_title">Settings</string>
+    <string name="settings_close_btn">Close</string>
+    <string name="settings_height">Height</string>
+    <string name="settings_diameter">Diameter</string>
+    <string name="settings_mass">Mass</string>
+    <string name="settings_payload_weight">Payload weight</string>
+</resources>

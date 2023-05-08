@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_close_btn">Закрыть</string>
+    <string name="settings_height">Высота</string>
+    <string name="settings_diameter">Диаметр</string>
+    <string name="settings_mass">Масса</string>
+    <string name="settings_payload_weight">Полезная нагрузка</string>
+</resources>

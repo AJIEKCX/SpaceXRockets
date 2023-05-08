@@ -21,13 +21,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import ru.alexpanov.core.model.DistanceUnit
 import ru.alexpanov.core.model.MassUnit
 import ru.alexpanov.settings.api.SettingsComponent
-import ru.alexpanov.spacex.cardPrimary
+import ru.alexpanov.spacex.theme.cardPrimary
 import ru.alexpanov.spacex.insets.navBarsPadding
-import ru.alexpanov.spacex.pagerIndicatorBackground
-import ru.alexpanov.spacex.textSecondary
+import ru.alexpanov.spacex.theme.pagerIndicatorBackground
+import ru.alexpanov.spacex.theme.textSecondary
 import ru.alexpanov.spacex.widget.SegmentedControl
 
 @Composable
@@ -45,25 +46,25 @@ fun SettingsScreen(
             onDismissClick = component::onDismissClick,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        SettingsCell(title = "Height") {
+        SettingsCell(title = stringResource(SettingsR.strings.settings_height)) {
             DistanceUnitChooser(
                 selected = state.height,
                 onValueChanged = component::onHeightChanged
             )
         }
-        SettingsCell(title = "Diameter") {
+        SettingsCell(title = stringResource(SettingsR.strings.settings_diameter)) {
             DistanceUnitChooser(
                 selected = state.diameter,
                 onValueChanged = component::onDiameterChanged
             )
         }
-        SettingsCell(title = "Mass") {
+        SettingsCell(title = stringResource(SettingsR.strings.settings_mass)) {
             MassUnitChooser(
                 selected = state.mass,
                 onValueChanged = component::onMassChanged
             )
         }
-        SettingsCell(title = "Payload weight") {
+        SettingsCell(title = stringResource(SettingsR.strings.settings_payload_weight)) {
             MassUnitChooser(
                 selected = state.payloadWeight,
                 onValueChanged = component::onPayloadWeightChanged
@@ -80,7 +81,7 @@ private fun SettingsAppBar(
 ) {
     Box(modifier.fillMaxWidth()) {
         Text(
-            text = "Settings",
+            text = stringResource(SettingsR.strings.settings_title),
             style = MaterialTheme.typography.body1,
             modifier = Modifier
                 .padding(vertical = 16.dp)

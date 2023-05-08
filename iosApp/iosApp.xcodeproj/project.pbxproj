@@ -17,6 +17,8 @@
 		6226CF7B29F6F50C00ADA4F4 /* RocketContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */; };
 		6226CF7E29F6FE3300ADA4F4 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */; };
 		62453BBA2A019963007224A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62453BB92A019963007224A9 /* SettingsView.swift */; };
+		625B3D322A090B58009376AA /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B3D312A090B58009376AA /* Font.swift */; };
+		625B3D342A090CC7009376AA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625B3D332A090CC7009376AA /* Fonts.swift */; };
 		62926DD029F8511B00D262A9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DCF29F8511B00D262A9 /* Color.swift */; };
 		62926DD329F8638E00D262A9 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD229F8638E00D262A9 /* AppButton.swift */; };
 		62926DD529FA586E00D262A9 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62926DD429FA586E00D262A9 /* StackView.swift */; };
@@ -40,6 +42,9 @@
 		6226CF7A29F6F50C00ADA4F4 /* RocketContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketContentView.swift; sourceTree = "<group>"; };
 		6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		62453BB92A019963007224A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		625B3D302A08E4FF009376AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		625B3D312A090B58009376AA /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		625B3D332A090CC7009376AA /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		62926DCF29F8511B00D262A9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		62926DD229F8638E00D262A9 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		62926DD429FA586E00D262A9 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				62233CFC2A02C7CF00F3A7D1 /* View.swift */,
+				625B3D312A090B58009376AA /* Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -128,6 +134,7 @@
 		6226CF7C29F6FE2100ADA4F4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				625B3D332A090CC7009376AA /* Fonts.swift */,
 				6226CF7D29F6FE3300ADA4F4 /* RoundedCornerShape.swift */,
 				62926DCF29F8511B00D262A9 /* Color.swift */,
 			);
@@ -180,6 +187,7 @@
 		A93A953929CC810C00F8E227 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				625B3D302A08E4FF009376AA /* Info.plist */,
 				622386F629F5AAA4001FC942 /* Presentation */,
 				622386EB29F5A8E9001FC942 /* Wrappers */,
 				A93A953A29CC810C00F8E227 /* iosApp.swift */,
@@ -249,6 +257,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = A93A952E29CC810C00F8E227;
 			productRefGroup = A93A953829CC810C00F8E227 /* Products */;
@@ -349,9 +358,11 @@
 				6226CF7E29F6FE3300ADA4F4 /* RoundedCornerShape.swift in Sources */,
 				A93A953B29CC810C00F8E227 /* iosApp.swift in Sources */,
 				622386F329F5A90C001FC942 /* ObservableValue.swift in Sources */,
+				625B3D322A090B58009376AA /* Font.swift in Sources */,
 				62926DD529FA586E00D262A9 /* StackView.swift in Sources */,
 				62A02C3B29F28E7F00CEC9F4 /* RootHolder.swift in Sources */,
 				622386F229F5A90C001FC942 /* SimpleChildStack.swift in Sources */,
+				625B3D342A090CC7009376AA /* Fonts.swift in Sources */,
 				622386EA29F5A864001FC942 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +496,7 @@
 				DEVELOPMENT_TEAM = SVWA7SCA7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -516,6 +528,7 @@
 				DEVELOPMENT_TEAM = SVWA7SCA7Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

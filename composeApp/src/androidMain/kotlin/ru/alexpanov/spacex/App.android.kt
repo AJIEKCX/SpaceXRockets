@@ -37,6 +37,8 @@ import ru.alexpanov.spacex.common.rememberSlotModalBottomSheetState
 import ru.alexpanov.spacex.launches.LaunchesAppBar
 import ru.alexpanov.spacex.launches.LaunchesScreen
 import ru.alexpanov.spacex.settings.SettingsScreen
+import ru.alexpanov.spacex.theme.AppTheme
+import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 
 class AndroidApp : Application()
 

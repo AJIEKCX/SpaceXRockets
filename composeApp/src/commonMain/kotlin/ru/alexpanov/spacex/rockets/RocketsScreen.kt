@@ -20,7 +20,7 @@ import ru.alexpanov.rockets.api.Rockets
 import ru.alexpanov.rockets.api.data.RocketUiModel
 import ru.alexpanov.rockets.api.data.RocketsUiState
 import ru.alexpanov.spacex.insets.navBarsPadding
-import ru.alexpanov.spacex.pagerIndicatorBackground
+import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.rockets.RocketContent
 import ru.alexpanov.spacex.widget.HorizontalPagerIndicator
 

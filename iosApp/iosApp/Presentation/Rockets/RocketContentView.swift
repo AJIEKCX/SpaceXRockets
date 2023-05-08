@@ -22,11 +22,11 @@ struct RocketContentView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text(rocket.name)
-                            .font(.system(size: 24))
+                            .customFont(.h5)
                             .foregroundColor(.textPrimary)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
-                        Image(systemName: "gearshape")
+                        
+                        Image(uiImage: MR.images().settings.toUIImage()!)
                             .resizable()
                             .frame(width: 24, height: 24)
                             .onTapGesture {
@@ -35,7 +35,6 @@ struct RocketContentView: View {
                     }
                     .padding([.top], 48)
                     .padding([.horizontal], 32)
-                 
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
@@ -48,23 +47,38 @@ struct RocketContentView: View {
                     .padding([.top], 32)
                     
                     VStack(spacing: 16) {
-                        RocketInfoCell(title: "First flight", value: rocket.firstFlight)
-                        RocketInfoCell(title: "Country", value: rocket.country)
-                        RocketInfoCell(title: "Cost per launch", value: rocket.costPerLaunch)
+                        RocketInfoCell(
+                            title:  RocketsR.strings().rocket_first_flight.desc().localized(),
+                            value: rocket.firstFlight
+                        )
+                        RocketInfoCell(
+                            title: RocketsR.strings().rocket_country.desc().localized(),
+                            value: rocket.country
+                        )
+                        RocketInfoCell(
+                            title: RocketsR.strings().rocket_cost_per_launch.desc().localized(),
+                            value: rocket.costPerLaunch
+                        )
                     }
                     .padding([.horizontal], 32)
                     .padding([.top], 40)
-        
-                    RocketStageCell(title: "First stage", stage: rocket.firstStage)
-                        .padding([.horizontal], 32)
-                        .padding([.top], 40)
                     
-                    RocketStageCell(title: "Second stage", stage: rocket.secondStage)
-                        .padding([.horizontal], 32)
-                        .padding([.top], 40)
+                    RocketStageCell(
+                        title: RocketsR.strings().rocket_stage_first.desc().localized(),
+                        stage: rocket.firstStage
+                    )
+                    .padding([.horizontal], 32)
+                    .padding([.top], 40)
+                    
+                    RocketStageCell(
+                        title: RocketsR.strings().rocket_stage_second.desc().localized(),
+                        stage: rocket.secondStage
+                    )
+                    .padding([.horizontal], 32)
+                    .padding([.top], 40)
                     
                     AppButton(
-                        title: "Show launches",
+                        title: RocketsR.strings().rocket_show_launches_btn.desc().localized(),
                         onClick: { onLaunchesClick(rocket.id) }
                     )
                     .padding([.vertical], 40)
@@ -86,11 +100,11 @@ struct RocketInfoCell: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.system(size: 16))
+                .customFont(.body1)
                 .foregroundColor(.textTertiary)
             Spacer()
             Text(value)
-                .font(.system(size: 16))
+                .customFont(.body1)
                 .foregroundColor(.textPrimary)
         }
     }
@@ -102,11 +116,10 @@ struct RocketParamCell: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(param.value)
-                .font(.system(size: 16))
-                .bold()
+                .customFont(.subtitle1)
                 .foregroundColor(.textPrimary)
-            Text(param.title)
-                .font(.system(size: 14))
+            Text(param.title.localized())
+                .customFont(.body2)
                 .foregroundColor(.textSecondary)
         }
         .frame(minWidth: 96, minHeight: 96)
@@ -121,14 +134,24 @@ struct RocketStageCell: View {
     var body: some View {
         VStack(spacing: 16) {
             Text(title)
-                .font(.system(size: 16))
-                .bold()
+                .customFont(.subtitle1)
                 .textCase(.uppercase)
                 .foregroundColor(.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            stageInfoCell(title: "Engines count", value: stage.engines)
-            stageInfoCell(title: "Fuel amount", value: stage.fuelAmountTons, unit: "ton")
-            stageInfoCell(title: "Burn time sec", value: stage.burnTimeSec, unit: "sec")
+            stageInfoCell(
+                title: RocketsR.strings().rocket_stage_engines_count.desc().localized(),
+                value: stage.engines
+            )
+            stageInfoCell(
+                title: RocketsR.strings().rocket_stage_fuel_amount.desc().localized(),
+                value: stage.fuelAmountTons,
+                unit: RocketsR.strings().rocket_stage_fuel_amount_unit.desc().localized()
+            )
+            stageInfoCell(
+                title: RocketsR.strings().rocket_stage_burn_time.desc().localized(),
+                value: stage.burnTimeSec,
+                unit: RocketsR.strings().rocket_stage_burn_time_unit.desc().localized()
+            )
         }
     }
     
@@ -140,15 +163,14 @@ struct RocketStageCell: View {
     ) -> some View {
         HStack(spacing: 8) {
             Text(title)
-                .font(.system(size: 16))
+                .customFont(.body1)
                 .foregroundColor(.textTertiary)
             Spacer()
             Text(value)
-                .font(.system(size: 16))
-                .bold()
+                .customFont(.subtitle1)
                 .foregroundColor(.textPrimary)
             Text(unit)
-                .font(.system(size: 16))
+                .customFont(.subtitle1)
                 .foregroundColor(.textSecondary)
         }
     }

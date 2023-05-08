@@ -27,14 +27,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 import ru.alexpanov.rockets.api.data.RocketParamUiModel
 import ru.alexpanov.rockets.api.data.RocketStageUiModel
 import ru.alexpanov.rockets.api.data.RocketUiModel
 import ru.alexpanov.spacex.MR
-import ru.alexpanov.spacex.cardPrimary
-import ru.alexpanov.spacex.textSecondary
-import ru.alexpanov.spacex.textTertiary
+import ru.alexpanov.spacex.theme.cardPrimary
+import ru.alexpanov.spacex.theme.textSecondary
+import ru.alexpanov.spacex.theme.textTertiary
 import ru.alexpanov.spacex.widget.RocketImage
 
 @Composable
@@ -90,25 +92,25 @@ fun RocketContent(
                 modifier = Modifier.padding(horizontal = 32.dp)
             ) {
                 RocketInfoCell(
-                    title = "First flight",
+                    title = stringResource(RocketsR.strings.rocket_first_flight),
                     value = rocket.firstFlight
                 )
                 RocketInfoCell(
-                    title = "Country",
+                    title = stringResource(RocketsR.strings.rocket_country),
                     value = rocket.country
                 )
                 RocketInfoCell(
-                    title = "Cost per launch",
+                    title = stringResource(RocketsR.strings.rocket_cost_per_launch),
                     value = rocket.costPerLaunch
                 )
             }
             RocketStageCell(
-                title = "First stage",
+                title = stringResource(RocketsR.strings.rocket_stage_first),
                 stage = rocket.firstStage,
                 modifier = Modifier.padding(start = 32.dp, end = 32.dp, top = 40.dp)
             )
             RocketStageCell(
-                title = "Second stage",
+                title = stringResource(RocketsR.strings.rocket_stage_second),
                 stage = rocket.secondStage,
                 modifier = Modifier.padding(horizontal = 32.dp, vertical = 40.dp)
             )
@@ -125,7 +127,7 @@ fun RocketContent(
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    text = "Show launches",
+                    text = stringResource(RocketsR.strings.rocket_show_launches_btn),
                     style = MaterialTheme.typography.button
                 )
             }
@@ -148,7 +150,7 @@ private fun RocketParamCard(
     ) {
         Text(param.value, style = MaterialTheme.typography.subtitle1)
         Text(
-            param.title,
+            param.title.localized(),
             style = MaterialTheme.typography.body2,
             color = MaterialTheme.colors.textSecondary
         )
@@ -192,18 +194,18 @@ private fun RocketStageCell(
             style = MaterialTheme.typography.subtitle1
         )
         RocketStageInfoCell(
-            title = "Engines count",
+            title = stringResource(RocketsR.strings.rocket_stage_engines_count),
             value = stage.engines,
         )
         RocketStageInfoCell(
-            title = "Fuel amount",
+            title = stringResource(RocketsR.strings.rocket_stage_fuel_amount),
             value = stage.fuelAmountTons,
-            unit = "ton"
+            unit = stringResource(RocketsR.strings.rocket_stage_fuel_amount_unit),
         )
         RocketStageInfoCell(
-            title = "Burn time",
+            title = stringResource(RocketsR.strings.rocket_stage_burn_time),
             value = stage.burnTimeSec,
-            unit = "sec"
+            unit = stringResource(RocketsR.strings.rocket_stage_burn_time_unit),
         )
     }
 }

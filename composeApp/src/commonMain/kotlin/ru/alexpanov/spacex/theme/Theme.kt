@@ -1,4 +1,4 @@
-package ru.alexpanov.spacex
+package ru.alexpanov.spacex.theme
 
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
@@ -39,8 +39,8 @@ val Colors.pagerIndicatorBackground
 
 @Composable
 fun rememberTypography(): Typography {
-    val regularFontFamily = fontFamilyResource(MR.fonts.LabGrotesque.regular)
-    val boldFontFamily = fontFamilyResource(MR.fonts.LabGrotesque.bold)
+    val regularFontFamily = fontFamilyResource(LabGrotesqueFont.regular)
+    val boldFontFamily = fontFamilyResource(LabGrotesqueFont.bold)
     return remember {
         Typography(
             body1 = TextStyle(

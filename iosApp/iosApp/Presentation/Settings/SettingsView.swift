@@ -8,9 +8,6 @@ struct SettingsView: View {
     
     private var state: RocketSettings { observableState.value }
     
-    @State private var heightUnit = DistanceUnit.meters
-    @State private var massUint = MassUnit.kg
-    
     init(_ component: SettingsComponent) {
         self.component = component
         observableState = .init(component.state)
@@ -27,11 +24,11 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Настройки")
+                    Text(SettingsR.strings().settings_title.desc().localized())
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: component.onDismissClick) {
-                        Text("Выйти")
+                        Text(SettingsR.strings().settings_close_btn.desc().localized())
                             .bold()
                     }
                     .foregroundColor(.textPrimary)
@@ -43,7 +40,7 @@ struct SettingsView: View {
     var content: some View {
         VStack {
             SettingsCell(
-                title: "Высота",
+                title: SettingsR.strings().settings_height.desc().localized(),
                 picker: {
                     DistanceUnitPicker(
                         unit: state.height,
@@ -52,7 +49,7 @@ struct SettingsView: View {
                 }
             )
             SettingsCell(
-                title: "Диаметр",
+                title: SettingsR.strings().settings_diameter.desc().localized(),
                 picker: {
                     DistanceUnitPicker(
                         unit: state.diameter,
@@ -61,7 +58,7 @@ struct SettingsView: View {
                 }
             )
             SettingsCell(
-                title: "Масса",
+                title: SettingsR.strings().settings_mass.desc().localized(),
                 picker: {
                     MassUnitPicker(
                         unit: state.mass,
@@ -70,7 +67,7 @@ struct SettingsView: View {
                 }
             )
             SettingsCell(
-                title: "Полезная нагрузка",
+                title: SettingsR.strings().settings_payload_weight.desc().localized(),
                 picker: {
                     MassUnitPicker(
                         unit: state.payloadWeight,
@@ -97,7 +94,7 @@ private struct SettingsCell<PickerContent: SettingsPicker>: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.system(size: 16))
+                .customFont(.body1)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             picker
                 .frame(width: 115, height: 40)

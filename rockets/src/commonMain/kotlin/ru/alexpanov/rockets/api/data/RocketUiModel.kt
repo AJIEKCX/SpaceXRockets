@@ -1,5 +1,7 @@
 package ru.alexpanov.rockets.api.data
 
+import dev.icerock.moko.resources.desc.StringDesc
+
 data class RocketUiModel(
     val id: String,
     val name: String,
@@ -13,7 +15,7 @@ data class RocketUiModel(
 )
 
 data class RocketParamUiModel(
-    val title: String,
+    val title: StringDesc,
     val value: String
 )
 

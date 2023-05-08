@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="rocket_param_height">Height, %s</string>
+    <string name="rocket_param_diameter">Diameter, %s</string>
+    <string name="rocket_param_mass">Mass, %s</string>
+    <string name="rocket_param_payload">Payload, %s</string>
+
+    <string name="rocket_first_flight">First flight</string>
+    <string name="rocket_country">Country</string>
+    <string name="rocket_cost_per_launch">Cost per launch</string>
+    <string name="rocket_stage_first">Fist stage</string>
+    <string name="rocket_stage_second">Second stage</string>
+    <string name="rocket_stage_engines_count">Engines count</string>
+    <string name="rocket_stage_fuel_amount">Fuel amount</string>
+    <string name="rocket_stage_fuel_amount_unit">ton</string>
+    <string name="rocket_stage_burn_time">Burn time</string>
+    <string name="rocket_stage_burn_time_unit">sec</string>
+    <string name="rocket_show_launches_btn">Show launches</string>
+</resources>

@@ -20,7 +20,7 @@ struct RootView: View {
     var body: some View {
         StackView(
             stackValue: childStack,
-            getTitle: { _ in "Ttile" },
+            getTitle: { _ in "" },
             onBack: root.onBackClicked,
             childContent: ChildView.init
         )
@@ -28,7 +28,7 @@ struct RootView: View {
         .preferredColorScheme(.dark)
         .sheet(
             item: childSlot.value.child?.instance,
-            onDismiss: { root.dismissOverlay() },
+            onDismiss: { root.dismissSlotChild() },
             content: { child in
                 switch child {
                 case let child as RootSlotChild.SettingsChild:
@@ -50,7 +50,7 @@ private struct ChildView: View {
         case let child as RootChild.RocketsChild:
             RocketsView(child.component)
                 .navigationBarHidden(true)
-                .navigationBarTitle(Text("Rockets"))
+                .navigationBarTitle(Text(""))
         case let child as RootChild.LaunchesChild:
             LaunchesView(child.component)
                 .navigationBarTitle(child.component.rocketName, displayMode: .inline)

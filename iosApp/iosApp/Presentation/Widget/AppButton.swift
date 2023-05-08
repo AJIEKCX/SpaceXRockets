@@ -7,15 +7,12 @@ struct AppButton: View {
     var body: some View {
         Button(action: onClick) {
             Text(title)
-                .font(.system(size: 20))
-                .bold()
+                .customFont(.button1)
                 .foregroundColor(Color.textPrimary)
                 .padding([.vertical], 16)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .background(Color.cardPrimary, in: RoundedRectangle(cornerRadius: 8))
-  
         }
- 
     }
 }
 

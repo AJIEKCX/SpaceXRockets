@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -27,6 +28,7 @@ kotlin {
                 implementation(libs.ktor.core)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.moko.resources)
             }
         }
         val commonTest by getting {
@@ -55,6 +57,11 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "ru.alexpanov.spacex.settings"
+    multiplatformResourcesClassName = "SettingsR"
 }
 
 android {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="rocket_param_height">Высота, %s</string>
+    <string name="rocket_param_diameter">Диаметр, %s</string>
+    <string name="rocket_param_mass">Масса, %s</string>
+    <string name="rocket_param_payload">Нагрузка, %s</string>
+
+    <string name="rocket_first_flight">Первый запуск</string>
+    <string name="rocket_country">Страна</string>
+    <string name="rocket_cost_per_launch">Стоимость запуска</string>
+    <string name="rocket_stage_first">Первая ступень</string>
+    <string name="rocket_stage_second">Вторая ступень</string>
+    <string name="rocket_stage_engines_count">Количество двигателей</string>
+    <string name="rocket_stage_fuel_amount">Количество топлива</string>
+    <string name="rocket_stage_fuel_amount_unit">тон</string>
+    <string name="rocket_stage_burn_time">Время сгорания</string>
+    <string name="rocket_stage_burn_time_unit">сек</string>
+    <string name="rocket_show_launches_btn">Посмотреть запуски</string>
+</resources>

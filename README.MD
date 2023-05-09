@@ -26,7 +26,7 @@ https://github.com/AJIEKCX/SpaceXRockets/assets/18354891/9c325a2e-0dc3-4a2c-a896
 https://github.com/AJIEKCX/SpaceXRockets/assets/18354891/03130744-067c-43b3-bc2a-151aeee517f8
 
 ## Before running!
- - check your system with (KDoctor)[https://github.com/Kotlin/kdoctor]
+ - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
  - install JDK 8 on your machine
  - add `local.properties` file to the project root and set a path to Android SDK there
  - run `./gradlew podInstall` in the project root
@@ -42,4 +42,4 @@ To build the application bundle:
 ### iOS
 To run the application on iPhone device/simulator:
  - Open `iosApp/iosApp.xcworkspace` in Xcode and run standard configuration
- - Or use (Kotlin Multiplatform Mobile plugin)[https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile] for Android Studio
+ - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio

@@ -19,7 +19,7 @@ actual class DateFormat {
     }
 
     private fun TemporalAccessor.format(pattern: DatePattern): String {
-        val formatter = DateTimeFormatter.ofPattern(pattern.value, Locale("ru", "RU"))
+        val formatter = DateTimeFormatter.ofPattern(pattern.value, Locale.getDefault())
         return formatter.format(this)
     }
 }

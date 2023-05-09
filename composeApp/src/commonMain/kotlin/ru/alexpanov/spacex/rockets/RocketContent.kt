@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.compose.painterResource
@@ -100,7 +101,7 @@ fun RocketContent(
                 )
                 RocketInfoCell(
                     title = stringResource(RocketsR.strings.rocket_cost_per_launch),
-                    value = rocket.costPerLaunch
+                    value = rocket.costPerLaunch.localized()
                 )
             }
             RocketStageCell(
@@ -154,18 +155,21 @@ private fun RocketInfoCell(
     value: String,
     modifier: Modifier = Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
         Text(
             text = title,
             style = MaterialTheme.typography.body1,
             color = MaterialTheme.colors.textTertiary,
-            modifier = Modifier
-                .padding(end = 16.dp)
-                .weight(1f)
+            maxLines = 1,
         )
         Text(
             text = value,
             style = MaterialTheme.typography.body1,
+            textAlign = TextAlign.End,
+            modifier = Modifier.padding(start = 16.dp)
         )
     }
 }
@@ -213,6 +217,7 @@ private fun RocketStageInfoCell(
             text = title,
             style = MaterialTheme.typography.body1,
             color = MaterialTheme.colors.textTertiary,
+            maxLines = 1,
             modifier = Modifier
                 .padding(end = 16.dp)
                 .weight(1f)
@@ -220,11 +225,13 @@ private fun RocketStageInfoCell(
         Text(
             text = value,
             style = MaterialTheme.typography.body1,
+            maxLines = 1,
             modifier = Modifier.padding(end = 8.dp)
         )
         Text(
             text = unit,
             style = MaterialTheme.typography.subtitle1,
+            maxLines = 1,
             color = MaterialTheme.colors.textSecondary,
         )
     }

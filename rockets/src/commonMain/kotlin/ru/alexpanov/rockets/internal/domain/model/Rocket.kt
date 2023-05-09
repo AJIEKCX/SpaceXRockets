@@ -1,10 +1,12 @@
 package ru.alexpanov.rockets.internal.domain.model
 
+import kotlinx.datetime.LocalDate
+
 internal data class Rocket(
     val id: String,
     val name: String,
     val costPerLaunch: Long,
-    val firstFlight: String,
+    val firstFlight: LocalDate,
     val country: String,
     val height: RocketHeight,
     val diameter: RocketDiameter,

@@ -8,6 +8,7 @@
     <string name="rocket_first_flight">First flight</string>
     <string name="rocket_country">Country</string>
     <string name="rocket_cost_per_launch">Cost per launch</string>
+    <string name="rocket_cost_value">$%s m.</string>
     <string name="rocket_stage_first">Fist stage</string>
     <string name="rocket_stage_second">Second stage</string>
     <string name="rocket_stage_engines_count">Engines count</string>

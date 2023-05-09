@@ -8,6 +8,7 @@
     <string name="rocket_first_flight">Первый запуск</string>
     <string name="rocket_country">Страна</string>
     <string name="rocket_cost_per_launch">Стоимость запуска</string>
+    <string name="rocket_cost_value">$%s млн</string>
     <string name="rocket_stage_first">Первая ступень</string>
     <string name="rocket_stage_second">Вторая ступень</string>
     <string name="rocket_stage_engines_count">Количество двигателей</string>

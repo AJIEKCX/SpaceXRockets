@@ -2,6 +2,8 @@ package ru.alexpanov.rockets.internal.presentation
 
 import dev.icerock.moko.resources.desc.ResourceFormatted
 import dev.icerock.moko.resources.desc.StringDesc
+import ru.alexpanov.core.date.DatePattern
+import ru.alexpanov.core.extension.format
 import ru.alexpanov.core.model.DistanceUnit
 import ru.alexpanov.core.model.MassUnit
 import ru.alexpanov.core.model.RocketSettings
@@ -26,20 +28,25 @@ internal fun Rocket.toUiModel(settings: RocketSettings): RocketUiModel {
             mass.toUiModel(settings.mass),
             payloadWeight.toUiModel(settings.payloadWeight)
         ),
-        firstFlight = firstFlight,
+        firstFlight = firstFlight.format(DatePattern.D_MMM_YYYY),
         country = country,
-        costPerLaunch = costPerLaunch.toString(),
+        costPerLaunch = formatCostPerLaunch(costPerLaunch),
         firstStage = firstStage.toUiModel(),
         secondStage = secondStage.toUiModel(),
         flickrImage = flickrImage
     )
 }
 
+private fun formatCostPerLaunch(value: Long): StringDesc {
+    val valueInMillions = value / 1_000_000
+    return StringDesc.ResourceFormatted(RocketsR.strings.rocket_cost_value, valueInMillions)
+}
+
 private fun RocketStage.toUiModel(): RocketStageUiModel {
     return RocketStageUiModel(
         engines = engines.toString(),
-        fuelAmountTons = fuelAmountTons.toString(),
-        burnTimeSec = burnTimeSec?.toString() ?: "-"
+        fuelAmountTons = fuelAmountTons.format(),
+        burnTimeSec = burnTimeSec?.toString() ?: "—"
     )
 }
 
@@ -50,7 +57,7 @@ private fun RocketHeight.toUiModel(unit: DistanceUnit): RocketParamUiModel {
     }
 
     val title = StringDesc.ResourceFormatted(RocketsR.strings.rocket_param_height, unit.value)
-    return RocketParamUiModel(title = title, value.toString())
+    return RocketParamUiModel(title = title, value.format())
 }
 
 private fun RocketDiameter.toUiModel(unit: DistanceUnit): RocketParamUiModel {
@@ -59,7 +66,7 @@ private fun RocketDiameter.toUiModel(unit: DistanceUnit): RocketParamUiModel {
         DistanceUnit.Feet -> feet
     }
     val title = StringDesc.ResourceFormatted(RocketsR.strings.rocket_param_diameter, unit.value)
-    return RocketParamUiModel(title = title, value.toString())
+    return RocketParamUiModel(title = title, value.format())
 }
 
 private fun RocketMass.toUiModel(unit: MassUnit): RocketParamUiModel {

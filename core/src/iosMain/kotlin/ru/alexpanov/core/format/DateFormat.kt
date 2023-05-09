@@ -8,7 +8,9 @@ import platform.Foundation.NSDateComponents
 import platform.Foundation.NSDateFormatter
 import platform.Foundation.NSLocale
 import platform.Foundation.NSTimeZone
+import platform.Foundation.currentLocale
 import platform.Foundation.localTimeZone
+import platform.Foundation.localeIdentifier
 import ru.alexpanov.core.date.DatePattern
 
 actual class DateFormat {
@@ -24,7 +26,7 @@ actual class DateFormat {
         val dateFormatter = NSDateFormatter().apply {
             timeZone = NSTimeZone.localTimeZone
             dateFormat = pattern.value
-            locale = NSLocale("ru_RU")
+            locale = NSLocale.currentLocale
         }
         val nsDate = NSCalendar.currentCalendar.dateFromComponents(this)
 

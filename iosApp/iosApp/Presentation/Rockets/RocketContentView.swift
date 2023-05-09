@@ -57,7 +57,7 @@ struct RocketContentView: View {
                         )
                         RocketInfoCell(
                             title: RocketsR.strings().rocket_cost_per_launch.desc().localized(),
-                            value: rocket.costPerLaunch
+                            value: rocket.costPerLaunch.localized()
                         )
                     }
                     .padding([.horizontal], 32)

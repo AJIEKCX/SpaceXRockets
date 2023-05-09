@@ -8,7 +8,7 @@ data class RocketUiModel(
     val params: List<RocketParamUiModel>,
     val firstFlight: String,
     val country: String,
-    val costPerLaunch: String,
+    val costPerLaunch: StringDesc,
     val firstStage: RocketStageUiModel,
     val secondStage: RocketStageUiModel,
     val flickrImage: String

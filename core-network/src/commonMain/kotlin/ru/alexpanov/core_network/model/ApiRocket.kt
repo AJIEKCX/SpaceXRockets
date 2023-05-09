@@ -1,5 +1,7 @@
 package ru.alexpanov.core_network.model
 
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.serializers.LocalDateIso8601Serializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -9,8 +11,9 @@ data class ApiRocket(
     val name: String,
     @SerialName("cost_per_launch")
     val costPerLaunch: Long,
+    @Serializable(with = LocalDateIso8601Serializer::class)
     @SerialName("first_flight")
-    val firstFlight: String,
+    val firstFlight: LocalDate,
     val country: String,
     val height: ApiHeight,
     val diameter: ApiDiameter,

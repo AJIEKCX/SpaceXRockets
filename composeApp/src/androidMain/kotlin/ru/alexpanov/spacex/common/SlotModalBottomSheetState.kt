@@ -44,13 +44,15 @@ fun <C : Any, T : Any> rememberSlotModalBottomSheetState(
     val sheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         skipHalfExpanded = skipHalfExpanded,
-        confirmValueChange = { state ->
-            if (state == ModalBottomSheetValue.Hidden) {
-                onDismiss()
-            }
+        confirmValueChange = {
             true
         }
     )
+    LaunchedEffect(sheetState.targetValue) {
+        if (sheetState.targetValue == ModalBottomSheetValue.Hidden) {
+            onDismiss()
+        }
+    }
     val childContent = remember { mutableStateOf(emptyContent) }
 
     LaunchedEffect(child == null) {

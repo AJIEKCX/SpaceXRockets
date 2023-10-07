@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -61,9 +59,8 @@ private fun RocketsContent(
     modifier: Modifier = Modifier
 ) {
     Column(modifier.fillMaxSize()) {
-        val pagerState = rememberPagerState()
+        val pagerState = rememberPagerState(0) { rockets.size }
         HorizontalPager(
-            pageCount = rockets.size,
             state = pagerState,
             key = { index -> rockets[index].id },
             modifier = Modifier

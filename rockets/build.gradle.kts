@@ -5,7 +5,7 @@ plugins {
 }
 
 kotlin {
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -38,9 +38,15 @@ kotlin {
         }
         val androidMain by getting
         val androidUnitTest by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
+        val iosX64Main by getting {
+            resources.srcDirs("build/generated/moko/iosX64Main/src")
+        }
+        val iosArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosArm64Main/src")
+        }
+        val iosSimulatorArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosSimulatorArm64Main/src")
+        }
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -72,5 +78,8 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
+    }
+    sourceSets["main"].apply {
+        java.srcDirs("build/generated/moko/androidMain/src")
     }
 }

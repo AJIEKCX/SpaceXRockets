@@ -14,12 +14,15 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.Child
 import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.Value
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
 
 private val emptyContent: @Composable ColumnScope.() -> Unit = {
     Spacer(Modifier.height(1.dp))
@@ -44,13 +47,20 @@ fun <C : Any, T : Any> rememberSlotModalBottomSheetState(
     val sheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         skipHalfExpanded = skipHalfExpanded,
-        confirmValueChange = { state ->
-            if (state == ModalBottomSheetValue.Hidden) {
-                onDismiss()
-            }
+        confirmValueChange = {
             true
         }
     )
+    LaunchedEffect(sheetState) {
+        snapshotFlow { sheetState.isVisible }
+            .distinctUntilChanged()
+            .drop(1)
+            .collect { visible ->
+                if (visible.not()) {
+                    onDismiss()
+                }
+            }
+    }
     val childContent = remember { mutableStateOf(emptyContent) }
 
     LaunchedEffect(child == null) {

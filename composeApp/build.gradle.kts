@@ -9,7 +9,7 @@ plugins {
 }
 
 kotlin {
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -94,9 +94,15 @@ kotlin {
             }
         }
 
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
+        val iosX64Main by getting {
+            resources.srcDirs("build/generated/moko/iosX64Main/src")
+        }
+        val iosArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosArm64Main/src")
+        }
+        val iosSimulatorArm64Main by getting {
+            resources.srcDirs("build/generated/moko/iosSimulatorArm64Main/src")
+        }
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -131,11 +137,11 @@ multiplatformResources {
 
 android {
     namespace = "ru.alexpanov.spacex"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
 
         applicationId = "ru.alexpanov.spacex.androidApp"
         versionCode = 1
@@ -145,6 +151,7 @@ android {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/resources")
         resources.srcDirs("src/commonMain/resources")
+        java.srcDirs("build/generated/moko/androidMain/src")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -20,5 +20,6 @@ class ComponentKoinContext : InstanceKeeper.Instance {
 
     override fun onDestroy() {
         koinApp?.close()
+        koinApp = null
     }
 }

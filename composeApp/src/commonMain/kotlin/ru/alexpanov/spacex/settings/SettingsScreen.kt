@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -26,7 +27,6 @@ import ru.alexpanov.core.model.DistanceUnit
 import ru.alexpanov.core.model.MassUnit
 import ru.alexpanov.settings.api.SettingsComponent
 import ru.alexpanov.spacex.theme.cardPrimary
-import ru.alexpanov.spacex.insets.navBarsPadding
 import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.theme.textSecondary
 import ru.alexpanov.spacex.widget.SegmentedControl
@@ -70,7 +70,7 @@ fun SettingsScreen(
                 onValueChanged = component::onPayloadWeightChanged
             )
         }
-        Spacer(Modifier.height(56.dp).navBarsPadding())
+        Spacer(Modifier.height(56.dp).systemBarsPadding())
     }
 }
 
@@ -125,7 +125,7 @@ private fun DistanceUnitChooser(
     modifier: Modifier = Modifier
 ) {
     SettingsSegmentedControl(
-        segments = DistanceUnit.values().toList(),
+        segments = DistanceUnit.entries,
         selected = selected,
         onSegmentSelected = onValueChanged,
         modifier = modifier
@@ -141,7 +141,7 @@ private fun MassUnitChooser(
     modifier: Modifier = Modifier
 ) {
     SettingsSegmentedControl(
-        segments = MassUnit.values().toList(),
+        segments = MassUnit.entries,
         selected = selected,
         onSegmentSelected = onValueChanged,
         modifier = modifier

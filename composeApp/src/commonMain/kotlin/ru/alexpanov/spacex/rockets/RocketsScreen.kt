@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.MaterialTheme
@@ -17,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import ru.alexpanov.rockets.api.Rockets
 import ru.alexpanov.rockets.api.data.RocketUiModel
 import ru.alexpanov.rockets.api.data.RocketsUiState
-import ru.alexpanov.spacex.insets.navBarsPadding
 import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.rockets.RocketContent
 import ru.alexpanov.spacex.widget.AppProgressBar
@@ -78,7 +78,7 @@ private fun RocketsContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colors.pagerIndicatorBackground)
-                .navBarsPadding(),
+                .systemBarsPadding(),
         ) {
             HorizontalPagerIndicator(
                 pagerState = pagerState,

@@ -1,19 +1,18 @@
 import ComposeApp
 import SwiftUI
 
-final class ObservableValue<T: AnyObject>: ObservableObject {
-  private let observableValue: Value<T>
-  @Published var value: T
-  private var observer: ((T) -> Void)?
-  
-  init(_ value: Value<T>) {
-    observableValue = value
-    self.value = observableValue.value
-    observer = { [weak self] value in self?.value = value }
-    observableValue.subscribe(observer: observer!)
+public class ObservableValue<T : AnyObject> : ObservableObject {
+  @Published
+  public var value: T
+
+  private var cancellation: Cancellation?
+
+  public init(_ value: Value<T>) {
+    self.value = value.value
+    self.cancellation = value.subscribe { [weak self] value in self?.value = value }
   }
-  
+
   deinit {
-    observableValue.unsubscribe(observer: self.observer!)
+    cancellation?.cancel()
   }
 }

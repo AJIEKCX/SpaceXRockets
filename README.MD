@@ -1,11 +1,11 @@
 # SpaceXRockets
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.8.20-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.10-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-EAEAEA.svg?style=flat)
 
-A KMM sample showing the SpaceX rockets and launches using [SpaceXApi](https://github.com/r-spacex/SpaceX-API)
+A KMP sample showing the SpaceX rockets and launches using [SpaceXApi](https://github.com/r-spacex/SpaceX-API)
 
 <img src="https://github.com/AJIEKCX/SpaceXRockets/assets/18354891/00415a10-0370-4552-8680-a9c33350cb26" width="720">
 

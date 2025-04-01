@@ -1,10 +1,10 @@
 package ru.alexpanov.spacex.theme
 
-import androidx.compose.material.Colors
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Typography
-import androidx.compose.material.darkColors
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Typography
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
@@ -14,26 +14,28 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.compose.fontFamilyResource
 
-private val DarkColors = darkColors(background = Color.Black)
+private val DarkColorScheme = darkColorScheme(
+    background = Color.Black
+)
 
 private val lineHeightStyle = LineHeightStyle(
     alignment = LineHeightStyle.Alignment.Center,
     trim = LineHeightStyle.Trim.None
 )
 
-val Colors.textSecondary
+val ColorScheme.textSecondary
     @Composable
     get() = Color(0xFF8E8E8F)
 
-val Colors.textTertiary
+val ColorScheme.textTertiary
     @Composable
     get() = Color(0xFFCACACA)
 
-val Colors.cardPrimary
+val ColorScheme.cardPrimary
     @Composable
     get() = Color(0xFF212121)
 
-val Colors.pagerIndicatorBackground
+val ColorScheme.pagerIndicatorBackground
     @Composable
     get() = Color(0xFF121212)
 
@@ -43,42 +45,42 @@ fun rememberTypography(): Typography {
     val boldFontFamily = fontFamilyResource(LabGrotesqueFont.bold)
     return remember {
         Typography(
-            body1 = TextStyle(
+            bodyLarge = TextStyle(
                 fontFamily = regularFontFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
                 lineHeightStyle = lineHeightStyle
             ),
-            body2 = TextStyle(
+            bodyMedium = TextStyle(
                 fontFamily = regularFontFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
                 lineHeight = 20.sp,
                 lineHeightStyle = lineHeightStyle
             ),
-            subtitle1 = TextStyle(
+            titleMedium = TextStyle(
                 fontFamily = boldFontFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
                 lineHeightStyle = lineHeightStyle
             ),
-            h6 = TextStyle(
+            headlineSmall = TextStyle(
                 fontFamily = regularFontFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 20.sp,
                 lineHeight = 28.sp,
                 lineHeightStyle = lineHeightStyle
             ),
-            h5 = TextStyle(
+            headlineMedium = TextStyle(
                 fontFamily = regularFontFamily,
                 fontWeight = FontWeight.Normal,
                 fontSize = 24.sp,
                 lineHeight = 32.sp,
                 lineHeightStyle = lineHeightStyle
             ),
-            button = TextStyle(
+            labelMedium = TextStyle(
                 fontFamily = boldFontFamily,
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
@@ -92,12 +94,12 @@ fun rememberTypography(): Typography {
 @Composable
 internal fun AppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = DarkColors,
+        colorScheme = DarkColorScheme,
         typography = rememberTypography(),
         content = {
             Surface(
                 content = content,
-                color = MaterialTheme.colors.background
+                color = MaterialTheme.colorScheme.background
             )
         }
     )

@@ -16,10 +16,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,7 +62,7 @@ fun RocketContent(
                 .offset(y = ((-32).dp))
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                .background(MaterialTheme.colors.background)
+                .background(MaterialTheme.colorScheme.background)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -70,7 +70,7 @@ fun RocketContent(
             ) {
                 Text(
                     rocket.name,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.weight(1f)
                 )
                 IconButton(onClick = onShowSettingsClick) {
@@ -120,7 +120,7 @@ fun RocketContent(
             ) {
                 Text(
                     text = stringResource(RocketsR.strings.rocket_show_launches_btn),
-                    style = MaterialTheme.typography.button
+                    style = MaterialTheme.typography.labelMedium
                 )
             }
         }
@@ -136,15 +136,15 @@ private fun RocketParamCard(
         modifier = modifier
             .size(96.dp)
             .clip(RoundedCornerShape(32.dp))
-            .background(MaterialTheme.colors.cardPrimary),
+            .background(MaterialTheme.colorScheme.cardPrimary),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(param.value, style = MaterialTheme.typography.subtitle1)
+        Text(param.value, style = MaterialTheme.typography.titleMedium)
         Text(
             param.title.localized(),
-            style = MaterialTheme.typography.body2,
-            color = MaterialTheme.colors.textSecondary
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.textSecondary
         )
     }
 }
@@ -161,13 +161,13 @@ private fun RocketInfoCell(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.textTertiary,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.textTertiary,
             maxLines = 1,
         )
         Text(
             text = value,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.End,
             modifier = Modifier.padding(start = 16.dp)
         )
@@ -186,7 +186,7 @@ private fun RocketStageCell(
     ) {
         Text(
             text = title.uppercase(),
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.labelMedium
         )
         RocketStageInfoCell(
             title = stringResource(RocketsR.strings.rocket_stage_engines_count),
@@ -215,8 +215,8 @@ private fun RocketStageInfoCell(
     Row(modifier = modifier) {
         Text(
             text = title,
-            style = MaterialTheme.typography.body1,
-            color = MaterialTheme.colors.textTertiary,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.textTertiary,
             maxLines = 1,
             modifier = Modifier
                 .padding(end = 16.dp)
@@ -224,15 +224,15 @@ private fun RocketStageInfoCell(
         )
         Text(
             text = value,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             maxLines = 1,
             modifier = Modifier.padding(end = 8.dp)
         )
         Text(
             text = unit,
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.titleMedium,
             maxLines = 1,
-            color = MaterialTheme.colors.textSecondary,
+            color = MaterialTheme.colorScheme.textSecondary,
         )
     }
 }

@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
@@ -82,7 +82,7 @@ private fun SettingsAppBar(
     Box(modifier.fillMaxWidth()) {
         Text(
             text = stringResource(SettingsR.strings.settings_title),
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
                 .padding(vertical = 16.dp)
                 .align(Alignment.Center)
@@ -111,7 +111,7 @@ private fun SettingsCell(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.weight(1f)
         )
         chooser()
@@ -163,10 +163,10 @@ private fun <T : Any> SettingsSegmentedControl(
         selectedSegment = selected,
         onSegmentSelected = onSegmentSelected,
         modifier = modifier.width(115.dp),
-        backgroundColor = MaterialTheme.colors.cardPrimary,
-        selectedThumbColor = MaterialTheme.colors.onBackground,
-        normalTextColor = MaterialTheme.colors.textSecondary,
-        selectedTextColor = MaterialTheme.colors.pagerIndicatorBackground,
+        backgroundColor = MaterialTheme.colorScheme.cardPrimary,
+        selectedThumbColor = MaterialTheme.colorScheme.onBackground,
+        normalTextColor = MaterialTheme.colorScheme.textSecondary,
+        selectedTextColor = MaterialTheme.colorScheme.pagerIndicatorBackground,
         content = content
     )
 }

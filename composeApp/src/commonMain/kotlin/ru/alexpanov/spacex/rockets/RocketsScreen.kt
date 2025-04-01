@@ -1,4 +1,3 @@
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,7 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import ru.alexpanov.rockets.api.Rockets
 import ru.alexpanov.rockets.api.data.RocketUiModel
 import ru.alexpanov.rockets.api.data.RocketsUiState
-import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.rockets.RocketContent
+import ru.alexpanov.spacex.theme.pagerIndicatorBackground
 import ru.alexpanov.spacex.widget.AppProgressBar
 import ru.alexpanov.spacex.widget.ErrorStub
 import ru.alexpanov.spacex.widget.HorizontalPagerIndicator
@@ -36,6 +35,7 @@ fun RocketsScreen(component: Rockets) {
             is RocketsUiState.Loading -> {
                 AppProgressBar()
             }
+
             is RocketsUiState.Data -> {
                 RocketsContent(
                     rockets = state.rockets,
@@ -43,6 +43,7 @@ fun RocketsScreen(component: Rockets) {
                     onSettingsClick = component::onSettingsClick
                 )
             }
+
             is RocketsUiState.Error -> {
                 ErrorStub(onClick = component::onTryAgainClick)
             }
@@ -50,7 +51,6 @@ fun RocketsScreen(component: Rockets) {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun RocketsContent(
     rockets: List<RocketUiModel>,
@@ -77,7 +77,7 @@ private fun RocketsContent(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.pagerIndicatorBackground)
+                .background(MaterialTheme.colorScheme.pagerIndicatorBackground)
                 .systemBarsPadding(),
         ) {
             HorizontalPagerIndicator(

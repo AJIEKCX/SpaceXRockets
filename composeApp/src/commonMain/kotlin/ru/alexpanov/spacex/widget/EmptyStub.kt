@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,12 +33,12 @@ fun EmptyStub(
             contentDescription = null,
             modifier = Modifier
                 .size(128.dp)
-                .background(MaterialTheme.colors.onBackground, CircleShape)
+                .background(MaterialTheme.colorScheme.onBackground, CircleShape)
                 .padding(12.dp)
         )
         Text(
             title,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier.padding(top = 48.dp)
         )
         button()

@@ -12,11 +12,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -59,12 +58,15 @@ fun LaunchesScreen(
                 is LaunchesUiState.Loading -> {
                     AppProgressBar()
                 }
+
                 is LaunchesUiState.Data -> {
                     LaunchesContent(state.launches)
                 }
+
                 is LaunchesUiState.Empty -> {
                     EmptyStub(title = stringResource(MR.strings.launches_empty))
                 }
+
                 is LaunchesUiState.Error -> {
                     ErrorStub(onClick = component::onTryAgainClick)
                 }
@@ -109,13 +111,13 @@ private fun LaunchCard(
                     launch.name,
                     fontSize = 20.sp,
                     maxLines = 1,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.headlineSmall
                 )
                 Text(
                     launch.launchDate,
                     maxLines = 1,
-                    style = MaterialTheme.typography.body1,
-                    color = MaterialTheme.colors.textSecondary
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.textSecondary
                 )
             }
             Image(

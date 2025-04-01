@@ -6,19 +6,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.fade
@@ -54,57 +47,58 @@ class AppActivity : ComponentActivity() {
     }
 }
 
-
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun RootScreen(
     root: Root,
     modifier: Modifier = Modifier
 ) {
     val childStack by root.childStack.subscribeAsState()
+    val childSlot by root.childSlot.subscribeAsState()
 
     val bottomSheetState = rememberSlotModalBottomSheetState(
-        root.childSlot,
-        onDismiss = root::dismissSlotChild
+        child = childSlot.child?.instance
     ) { slotChild ->
-        when (val child = slotChild.instance) {
-            is Root.SlotChild.SettingsChild -> SettingsScreen(component = child.component)
+        when (slotChild) {
+            is Root.SlotChild.SettingsChild -> SettingsScreen(component = slotChild.component)
         }
     }
 
-    ModalBottomSheetLayout(
-        sheetState = bottomSheetState.sheetState,
-        sheetContent = bottomSheetState.sheetContent.value,
-        sheetShape = RoundedCornerShape(16.dp),
-        sheetBackgroundColor = MaterialTheme.colors.pagerIndicatorBackground
-    ) {
-        Children(
-            stack = childStack,
-            animation = stackAnimation { from, to, direction ->
-                if (direction.isFront) {
-                    slide() + fade()
-                } else {
-                    scale(frontFactor = 1F, backFactor = 0.7F) + fade()
-                }
-            },
-            modifier = modifier
-        ) {
-            when (val child = it.instance) {
-                is Root.Child.RocketsChild ->
-                    RocketsScreen(component = child.component)
+    if (bottomSheetState.isVisible.value) {
+        ModalBottomSheet(
+            sheetState = bottomSheetState.sheetState,
+            onDismissRequest = root::dismissSlotChild,
+            content = bottomSheetState.sheetContent.value,
+            containerColor = MaterialTheme.colorScheme.pagerIndicatorBackground,
+            dragHandle = null
+        )
+    }
 
-                is Root.Child.LaunchesChild ->
-                    LaunchesScreen(
-                        component = child.component,
-                        topBarContent = { component ->
-                            LaunchesAppBar(
-                                component = component,
-                                contentPadding = WindowInsets.statusBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
-                                    .asPaddingValues()
-                            )
-                        }
-                    )
+    Children(
+        stack = childStack,
+        animation = stackAnimation { from, to, direction ->
+            if (direction.isFront) {
+                slide() + fade()
+            } else {
+                scale(frontFactor = 1F, backFactor = 0.7F) + fade()
             }
+        },
+        modifier = modifier
+    ) {
+        when (val child = it.instance) {
+            is Root.Child.RocketsChild ->
+                RocketsScreen(component = child.component)
+
+            is Root.Child.LaunchesChild ->
+                LaunchesScreen(
+                    component = child.component,
+                    topBarContent = { component ->
+                        LaunchesAppBar(
+                            title = component.rocketName,
+                            onBackClicked = component::onBackClicked
+                        )
+                    }
+                )
         }
     }
 }

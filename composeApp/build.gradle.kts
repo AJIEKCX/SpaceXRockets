@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose)
-    alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.sqlDelight)
@@ -18,19 +17,15 @@ kotlin {
         }
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Compose application framework"
-        homepage = "empty"
-        ios.deploymentTarget = "15.0"
-        podfile = project.file("../iosApp/Podfile")
-        framework {
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
             export(libs.decompose)
             export(libs.essenty)
             export(libs.moko.resources)

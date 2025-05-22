@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose)
@@ -10,10 +12,8 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -58,6 +58,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.coil.compose)
             implementation(libs.coil.ktor3)
+            implementation(libs.jetbrains.material.icons.core)
             api(libs.moko.resources.compose)
             api(libs.moko.resources)
             api(libs.decompose)
@@ -103,8 +104,8 @@ android {
         versionName = "1.0.0"
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     packaging {
         resources.excludes.add("META-INF/**")

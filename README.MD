@@ -1,6 +1,6 @@
 # SpaceXRockets
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.10-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.21-blue.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 
 ![badge-android](http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-EAEAEA.svg?style=flat)
@@ -27,9 +27,8 @@ https://github.com/AJIEKCX/SpaceXRockets/assets/18354891/03130744-067c-43b3-bc2a
 
 ## Before running!
  - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
- - install JDK 8 on your machine
+ - install JDK 11 on your machine
  - add `local.properties` file to the project root and set a path to Android SDK there
- - run `./gradlew podInstall` in the project root
 
 ### Android
 To run the application on android device/emulator:  

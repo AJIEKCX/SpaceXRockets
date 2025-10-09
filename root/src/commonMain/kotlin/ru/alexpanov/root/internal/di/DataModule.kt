@@ -1,25 +1,19 @@
 package ru.alexpanov.root.internal.di
 
-import org.koin.core.module.dsl.factoryOf
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.bind
-import org.koin.dsl.module
 import ru.alexpanov.core_network.api.DefaultSpaceXApi
-import ru.alexpanov.core_network.api.SpaceXApi
 import ru.alexpanov.core_network.provider.HttpClientProvider
 import ru.alexpanov.core_network.provider.JsonProvider
 import ru.alexpanov.launches.api.data.LaunchesMemoryCache
 import ru.alexpanov.rockets.api.data.RocketsMemoryCache
 
-internal val dataModule = module {
-    factoryOf(::HttpClientProvider)
-    singleOf(HttpClientProvider::get)
+internal class DataModule : RootModuleDependencies {
+    private val json by lazy { JsonProvider().get() }
 
-    factoryOf(::JsonProvider)
-    singleOf(JsonProvider::get)
+    private val httpClient by lazy { HttpClientProvider(json).get() }
 
-    singleOf(::DefaultSpaceXApi) bind SpaceXApi::class
+    override val spaceXApi by lazy { DefaultSpaceXApi(httpClient) }
 
-    singleOf(::RocketsMemoryCache)
-    singleOf(::LaunchesMemoryCache)
+    override val rocketsMemoryCache by lazy { RocketsMemoryCache() }
+
+    override val launchesMemoryCache by lazy { LaunchesMemoryCache() }
 }

@@ -7,24 +7,19 @@ import ru.alexpanov.core.flow.wrapToAny
 import ru.alexpanov.core.model.DistanceUnit
 import ru.alexpanov.core.model.MassUnit
 import ru.alexpanov.core.model.RocketSettings
-import ru.alexpanov.settings.internal.di.createSettingsModules
+import ru.alexpanov.settings.internal.di.SettingsModule
 import ru.alexpanov.settings.internal.presentation.SettingsFeature
-import ru.kontur.core_koin.ComponentKoinContext
 
 class DefaultSettingsComponent(
     componentContext: ComponentContext,
     dependencies: SettingsDependencies,
     private val onDismiss: () -> Unit
 ) : SettingsComponent, ComponentContext by componentContext {
-    private val koinContext = instanceKeeper.getOrCreate {
-        ComponentKoinContext()
+
+    private val feature: SettingsFeature = instanceKeeper.getOrCreate {
+        val module = SettingsModule(dependencies)
+        module.settingsFeature
     }
-
-    private val scope = koinContext.getOrCreateKoinScope(
-        createSettingsModules(dependencies)
-    )
-
-    private val feature: SettingsFeature = instanceKeeper.getOrCreate { scope.get() }
 
     override val state: AnyStateFlow<RocketSettings> = feature.state.wrapToAny()
 

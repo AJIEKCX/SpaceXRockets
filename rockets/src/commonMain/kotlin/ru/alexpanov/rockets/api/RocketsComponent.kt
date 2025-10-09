@@ -5,9 +5,8 @@ import com.arkivanov.essenty.instancekeeper.getOrCreate
 import ru.alexpanov.core.flow.AnyStateFlow
 import ru.alexpanov.rockets.api.data.RocketUiModel
 import ru.alexpanov.rockets.api.data.RocketsUiState
-import ru.alexpanov.rockets.internal.di.createRocketsModules
+import ru.alexpanov.rockets.internal.di.RocketsModule
 import ru.alexpanov.rockets.internal.presentation.RocketsFeature
-import ru.kontur.core_koin.ComponentKoinContext
 
 class RocketsComponent(
     componentContext: ComponentContext,
@@ -15,15 +14,11 @@ class RocketsComponent(
     private val navigateLaunches: (RocketUiModel) -> Unit,
     private val navigateSettings: () -> Unit,
 ) : Rockets, ComponentContext by componentContext {
-    private val koinContext = instanceKeeper.getOrCreate {
-        ComponentKoinContext()
+
+    private val feature: RocketsFeature = instanceKeeper.getOrCreate {
+        val module = RocketsModule(dependencies)
+        module.rocketsFeature
     }
-
-    private val scope = koinContext.getOrCreateKoinScope(
-        createRocketsModules(dependencies)
-    )
-
-    private val feature: RocketsFeature = instanceKeeper.getOrCreate { scope.get() }
 
     override val state: AnyStateFlow<RocketsUiState> = feature.state
 

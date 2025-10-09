@@ -21,13 +21,11 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.coreKoin)
             implementation(projects.coreNetwork)
             implementation(projects.rockets)
             implementation(projects.launches)
             implementation(projects.settings)
             implementation(libs.decompose)
-            implementation(libs.koin.core)
             implementation(libs.ktor.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.core)

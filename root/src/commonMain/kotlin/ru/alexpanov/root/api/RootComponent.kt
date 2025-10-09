@@ -12,25 +12,21 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.instancekeeper.getOrCreate
+import com.arkivanov.essenty.instancekeeper.getOrCreateSimple
 import kotlinx.serialization.Serializable
 import ru.alexpanov.launches.api.LaunchesComponent
 import ru.alexpanov.rockets.api.RocketsComponent
-import ru.alexpanov.root.internal.di.dataModule
-import ru.alexpanov.root.internal.di.rootModule
+import ru.alexpanov.root.internal.di.DataModule
+import ru.alexpanov.root.internal.di.RootModule
 import ru.alexpanov.settings.api.DefaultSettingsComponent
-import ru.kontur.core_koin.ComponentKoinContext
 
 class RootComponent(
     componentContext: ComponentContext
 ) : Root, ComponentContext by componentContext {
-    private val koinContext = instanceKeeper.getOrCreate {
-        ComponentKoinContext()
-    }
 
-    private val scope = koinContext.getOrCreateKoinScope(
-        listOf(rootModule, dataModule)
-    )
+    private val rootModule = instanceKeeper.getOrCreateSimple {
+        RootModule(DataModule())
+    }
 
     private val navigation = StackNavigation<ScreenConfig>()
 
@@ -68,7 +64,7 @@ class RootComponent(
                 Root.Child.RocketsChild(
                     RocketsComponent(
                         componentContext = componentContext,
-                        dependencies = scope.get(),
+                        dependencies = rootModule,
                         navigateLaunches = { rocket ->
                             navigation.pushNew(
                                 ScreenConfig.Launches(
@@ -89,7 +85,7 @@ class RootComponent(
                     LaunchesComponent(
                         rocketName = config.rocketName,
                         rocketId = config.rocketId,
-                        dependencies = scope.get(),
+                        dependencies = rootModule,
                         navigateBack = navigation::pop,
                         componentContext = componentContext
                     )
@@ -108,7 +104,7 @@ class RootComponent(
                     DefaultSettingsComponent(
                         componentContext = componentContext,
                         onDismiss = slotNavigation::dismiss,
-                        dependencies = scope.get()
+                        dependencies = rootModule,
                     )
                 )
             }

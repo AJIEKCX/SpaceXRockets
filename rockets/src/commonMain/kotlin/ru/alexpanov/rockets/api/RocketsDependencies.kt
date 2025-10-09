@@ -7,5 +7,5 @@ import ru.alexpanov.rockets.api.data.RocketsMemoryCache
 interface RocketsDependencies {
     val spaceXApi: SpaceXApi
     val settingsRepository: SettingsRepository
-    val memoryCache: RocketsMemoryCache
+    val rocketsMemoryCache: RocketsMemoryCache
 }

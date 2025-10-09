@@ -55,7 +55,6 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.multiplatformSettings)
-            implementation(libs.koin.core)
             implementation(libs.coil.compose)
             implementation(libs.coil.ktor3)
             implementation(libs.jetbrains.material.icons.core)

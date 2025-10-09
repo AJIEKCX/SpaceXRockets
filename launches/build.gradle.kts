@@ -20,9 +20,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.coreNetwork)
-            implementation(projects.coreKoin)
             implementation(libs.decompose)
-            implementation(libs.koin.core)
             implementation(libs.ktor.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.core)

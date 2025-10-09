@@ -5,5 +5,5 @@ import ru.alexpanov.launches.api.data.LaunchesMemoryCache
 
 interface LaunchesDependencies {
     val spaceXApi: SpaceXApi
-    val memoryCache: LaunchesMemoryCache
+    val launchesMemoryCache: LaunchesMemoryCache
 }

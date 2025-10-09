@@ -13,7 +13,6 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        val mokoResourceVersion = libs.versions.mokoResources.get()
-        classpath("dev.icerock.moko:resources-generator:$mokoResourceVersion")
+        classpath(libs.moko.resources.generator)
     }
 }

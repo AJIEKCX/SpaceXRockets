@@ -47,6 +47,7 @@ moko-resources-compose = { module = "dev.icerock.moko:resources-compose", versio
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 desugarJdkLibs = "com.android.tools:desugar_jdk_libs:2.1.5"
+moko-resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
 
 [plugins]
 
@@ -57,4 +58,3 @@ composeCompiler = {id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
-moko-resources-plugin = { id = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
